@@ -1,2 +1,2 @@
 # MAD-Assignment
-A recipe app for MAP assignment
+A recipe app for MAD assignment
