@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1020047171019",
+    "project_id": "mad-assignment-recipe-app",
+    "storage_bucket": "mad-assignment-recipe-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020047171019:android:8d9d5988627db307db6a4e",
+        "android_client_info": {
+          "package_name": "sg.edu.np.madassignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020047171019-014nvm6pnm350o5nn3omrq42ah8hk4qd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sg.edu.np.madassignment",
+            "certificate_hash": "43a6058c35579bd04842522f7c13f0e3040c4cdb"
+          }
+        },
+        {
+          "client_id": "1020047171019-qm1d8kuorffd1b1oe34hbdia02s1cecg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJzs31GeJjpckQRUzrAavzenAqgIpewTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020047171019-qm1d8kuorffd1b1oe34hbdia02s1cecg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
