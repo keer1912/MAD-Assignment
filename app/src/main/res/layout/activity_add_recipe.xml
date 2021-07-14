@@ -6,25 +6,153 @@
     android:layout_height="match_parent"
     tools:context=".AddRecipeActivity">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="88dp"
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rounded_corner" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:srcCompat="@drawable/plus_symbol" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/addImage"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp"
+                android:background="#FFFFFF"
+                android:clickable="true"
+                android:foreground="@drawable/plus_symbol"
+                app:srcCompat="@drawable/rounded_corner" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                android:hint="Name"
+                app:helperTextTextColor="#FF0000"
+                app:helperText="Required*"
+                app:endIconMode="clear_text"
+                app:counterEnabled="true"
+                app:counterMaxLength="50">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etName"
+                    android:maxLength="50"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                android:hint="Description"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                android:hint="Time"
+                app:endIconMode="clear_text"
+                android:digits="0123456789">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                app:hintEnabled="false"
+                android:hint="Ingredients"
+                android:inputType="textMultiLine"
+                app:helperTextTextColor="#FF0000"
+                app:helperText="Required*">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etIngredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ingredients seperated by row \n \nIngredients 1 \nIngredients 2 \nIngredients 3"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                app:hintEnabled="false"
+                android:hint="Equipment Required"
+                android:inputType="textMultiLine">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etReqEquipment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Equipment Required \n \nOven,Mixer,Rice Cooker etc." />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                app:hintEnabled="false"
+                android:hint="Steps"
+                android:inputType="textMultiLine"
+                app:helperTextTextColor="#FF0000"
+                app:helperText="Required*">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSteps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Steps \n \nStep 1: Preheat Oven to 200°C. \nStep 2: Crack an Egg into a mixing bowl and beat it. \nStep 3: Slice 2 Cloves of Garlic. \n..." />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                android:hint="Serving Size"
+                app:helperTextTextColor="#FF0000"
+                app:helperText="Required*"
+                android:digits="0123456789">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etServingSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
