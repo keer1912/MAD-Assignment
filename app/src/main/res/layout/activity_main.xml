@@ -18,18 +18,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/getStarted"
         android:layout_width="165dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/rounded_corner"
 
         android:backgroundTint="@color/teal_200"
         android:fontFamily="@font/poppins"
-        android:text="Swipe  >"
-        app:backgroundTint="#289DDC"
+        android:text="Get Started"
+        android:textColor="#000000"
+        app:backgroundTint="#CEB7FA"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/viewpager"
+        app:layout_constraintStart_toStartOf="@+id/viewpager" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
