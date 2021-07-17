@@ -27,11 +27,12 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/welcomeUser"
         app:layout_constraintTop_toBottomOf="@+id/welcomeUser" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/RecyclerView1"
         android:layout_width="396dp"
         android:layout_height="199dp"
         android:layout_marginStart="16dp"
@@ -42,32 +43,13 @@
         app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
     <TextView
-        android:id="@+id/under30"
+        android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:fontFamily="@font/poppins"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView" />
+        app:layout_constraintBottom_toTopOf="@+id/RecyclerView1"
+        app:layout_constraintStart_toStartOf="@+id/RecyclerView1" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
-        android:layout_width="395dp"
-        android:layout_height="199dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="104dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
-
-    <TextView
-        android:id="@+id/community"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="@font/poppins"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

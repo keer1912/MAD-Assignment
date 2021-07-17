@@ -1,5 +1,6 @@
 package sg.edu.np.madassignment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Recipe {
@@ -8,13 +9,31 @@ public class Recipe {
     String description;
     int time;
     boolean timeFormatIsHour;
-    List<String> ingredients;
-    String reqEquipment;
+    ArrayList<String> ingredients;
+    ArrayList<String> reqEquipment;
     int servingSize;
-    String steps;
-
+    ArrayList<String> steps;
+    String category;
     String owner;
     int likes;
+
+    public Recipe() {
+    }
+
+    public Recipe(String name,int time) {
+
+        this.name = name;
+//        this.description = description;
+        this.time = time;
+//        this.timeFormatIsHour = timeFormatIsHour;
+//        this.ingredients = ingredients;
+//        this.reqEquipment = reqEquipment;
+//        this.servingSize = servingSize;
+//        this.steps = steps;
+//        this.owner = owner;
+//        this.likes = likes;
+    }
+
 
     //Getter & Setter
 
@@ -50,19 +69,19 @@ public class Recipe {
         this.timeFormatIsHour = timeFormatIsHour;
     }
 
-    public List<String> getIngredients() {
+    public ArrayList<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(ArrayList<String> ingredients) {
         this.ingredients = ingredients;
     }
 
-    public String getReqEquipment() {
+    public ArrayList<String> getReqEquipment() {
         return reqEquipment;
     }
 
-    public void setReqEquipment(String reqEquipment) {
+    public void setReqEquipment(ArrayList<String> reqEquipment) {
         this.reqEquipment = reqEquipment;
     }
 
@@ -74,11 +93,11 @@ public class Recipe {
         this.servingSize = servingSize;
     }
 
-    public String getSteps() {
+    public ArrayList<String> getSteps() {
         return steps;
     }
 
-    public void setSteps(String steps) {
+    public void setSteps(ArrayList<String> steps) {
         this.steps = steps;
     }
 
@@ -96,5 +115,13 @@ public class Recipe {
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
