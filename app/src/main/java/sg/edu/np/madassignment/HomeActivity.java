@@ -65,10 +65,11 @@ public class HomeActivity extends AppCompatActivity {
                     if (eachSnapshot.child("name").getValue() == null) break;
                     recipe.setName(eachSnapshot.child("name").getValue().toString());
                     recipe.setTime(Integer.valueOf(String.valueOf(eachSnapshot.child("time").getValue())));
-                    Log.d("DB", eachSnapshot.child("name").getValue().toString());
+                    Log.d("DB", eachSnapshot.child("time").getValue().toString());
                     list.add(recipe);
                 }
                 homeAdapter = new HomeAdapter(mContext,list);
+                recyclerView.setAdapter(homeAdapter);
                 Log.v("TEST", list.toString());
             }
 

@@ -33,7 +33,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeVH>{
     public void onBindViewHolder(@NonNull HomeVH holder, int position) {
         Recipe recipe = recipeArrayList.get(position);
         holder.recipeName.setText(recipe.getName());
-        holder.recipeTime.setText(recipe.getTime());
+        holder.recipeTime.setText(String.valueOf(recipe.getTime()));
         //holder.recipeImg.s(recipe.getImage());
     }
 
