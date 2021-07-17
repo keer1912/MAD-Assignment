@@ -60,10 +60,12 @@ public class HomeActivity extends AppCompatActivity {
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot snapshot1: snapshot.getChildren()){
+                for(DataSnapshot eachSnapshot: snapshot.getChildren()){
                     Recipe recipe = new Recipe();
-                    recipe.setName(snapshot.child("name").getValue().toString());
-                    recipe.setTime(Integer.valueOf(String.valueOf(snapshot.child("time").getValue())));
+                    if (eachSnapshot.child("name").getValue() == null) break;
+                    recipe.setName(eachSnapshot.child("name").getValue().toString());
+                    recipe.setTime(Integer.valueOf(String.valueOf(eachSnapshot.child("time").getValue())));
+                    Log.d("DB", eachSnapshot.child("name").getValue().toString());
                     list.add(recipe);
                 }
                 homeAdapter = new HomeAdapter(mContext,list);
