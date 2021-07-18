@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -17,13 +19,17 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     TextView welcomeUser;
     TextView welcomeText;
+    TextView category;
     TextView userName;
     private FirebaseAuth mAuth;
     private ArrayList<Recipe> list;
@@ -49,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         recyclerView = findViewById(R.id.RecyclerView1);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+//      recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
@@ -63,10 +69,25 @@ public class HomeActivity extends AppCompatActivity {
                 for(DataSnapshot eachSnapshot: snapshot.getChildren()){
                     Recipe recipe = new Recipe();
                     if (eachSnapshot.child("name").getValue() == null) break;
-                    recipe.setName(eachSnapshot.child("name").getValue().toString());
-                    recipe.setTime(Integer.valueOf(String.valueOf(eachSnapshot.child("time").getValue())));
-                    Log.d("DB", eachSnapshot.child("time").getValue().toString());
-                    list.add(recipe);
+                    if (eachSnapshot.child("category").getValue().equals("30 minutes and Under") ){
+                        category = findViewById(R.id.category);
+                        category.setText("30 minutes and under");
+
+                        //value setting from database
+                        recipe.setOwner(eachSnapshot.child("owner").getValue().toString());
+                        recipe.setName(eachSnapshot.child("name").getValue().toString());
+                        recipe.setDescription(eachSnapshot.child("desc").getValue().toString());
+                        recipe.setTime(Integer.valueOf(String.valueOf(eachSnapshot.child("time").getValue())));
+                        recipe.setLikes(Integer.valueOf(String.valueOf(eachSnapshot.child("likes").getValue())));
+                        recipe.setDifficulty(eachSnapshot.child("difficulty").getValue().toString());
+                        recipe.setServingSize(Integer.valueOf(String.valueOf(eachSnapshot.child("servingSize").getValue())));
+                        recipe.setCategory(eachSnapshot.child("category").getValue().toString());
+
+
+
+                        Log.d("DB", eachSnapshot.child("time").getValue().toString());
+                        list.add(recipe);
+                    }
                 }
                 homeAdapter = new HomeAdapter(mContext,list);
                 recyclerView.setAdapter(homeAdapter);
@@ -77,6 +98,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
         });
     }
 
