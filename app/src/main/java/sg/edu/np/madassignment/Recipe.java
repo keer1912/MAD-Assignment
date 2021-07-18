@@ -1,5 +1,9 @@
 package sg.edu.np.madassignment;
 
+import android.net.Uri;
+
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,31 +13,17 @@ public class Recipe {
     String description;
     int time;
     boolean timeFormatIsHour;
-    ArrayList<String> ingredients;
-    ArrayList<String> reqEquipment;
+    List<String> ingredients;
+    List<String> reqEquipment;
     int servingSize;
-    ArrayList<String> steps;
+    List<String> steps;
     String category;
     String owner;
     int likes;
-
+    String img;
+    String difficulty;
     public Recipe() {
     }
-
-    public Recipe(String name,int time) {
-
-        this.name = name;
-//        this.description = description;
-        this.time = time;
-//        this.timeFormatIsHour = timeFormatIsHour;
-//        this.ingredients = ingredients;
-//        this.reqEquipment = reqEquipment;
-//        this.servingSize = servingSize;
-//        this.steps = steps;
-//        this.owner = owner;
-//        this.likes = likes;
-    }
-
 
     //Getter & Setter
 
@@ -53,6 +43,22 @@ public class Recipe {
         this.description = description;
     }
 
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public int getTime() {
         return time;
     }
@@ -69,19 +75,19 @@ public class Recipe {
         this.timeFormatIsHour = timeFormatIsHour;
     }
 
-    public ArrayList<String> getIngredients() {
+    public List<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(ArrayList<String> ingredients) {
+    public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
 
-    public ArrayList<String> getReqEquipment() {
+    public List<String> getReqEquipment() {
         return reqEquipment;
     }
 
-    public void setReqEquipment(ArrayList<String> reqEquipment) {
+    public void setReqEquipment(List<String> reqEquipment) {
         this.reqEquipment = reqEquipment;
     }
 
@@ -93,11 +99,11 @@ public class Recipe {
         this.servingSize = servingSize;
     }
 
-    public ArrayList<String> getSteps() {
+    public List<String> getSteps() {
         return steps;
     }
 
-    public void setSteps(ArrayList<String> steps) {
+    public void setSteps(List<String> steps) {
         this.steps = steps;
     }
 
