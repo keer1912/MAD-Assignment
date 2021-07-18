@@ -2,22 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
-        android:layout_width="217dp"
-        android:layout_height="213dp"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="2dp"
+        android:layout_width="190dp"
+        android:layout_height="216dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/RecipeLayout"
             android:layout_width="match_parent"
-            android:layout_height="212dp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <ImageView
@@ -32,17 +32,28 @@
             <TextView
                 android:id="@+id/recipeName"
                 android:layout_width="match_parent"
-                android:layout_height="47dp"
+                android:layout_height="60dp"
                 android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#E4E4E4"
+                android:fontFamily="@font/poppins"
+                android:padding="10dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/black"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/recipeTime"
                 android:layout_width="match_parent"
-                android:layout_height="51dp"
+                android:layout_height="40dp"
                 android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#E4E4E4"
+                android:fontFamily="@font/poppins"
+                android:padding="10dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/black" />
 

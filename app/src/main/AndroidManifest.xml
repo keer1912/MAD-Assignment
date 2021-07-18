@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAssignment">
         <activity
+            android:name=".RecipeDetail"
+            android:label="@string/title_activity_recipe_detail"
+            android:theme="@style/Theme.MADAssignment.NoActionBar"></activity>
+        <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:theme="@style/Theme.MADAssignment.NoActionBar"></activity>
+            android:theme="@style/Theme.MADAssignment.NoActionBar" />
         <activity android:name=".AddRecipeActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".HomeActivity" />
