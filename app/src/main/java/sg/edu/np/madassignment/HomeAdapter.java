@@ -49,7 +49,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeVH>{
                 intent.putExtra("difficulty",recipe.getDifficulty());
                 intent.putExtra("likes",recipe.getLikes());
                 intent.putExtra("owner",recipe.getOwner());
-
+                intent.putStringArrayListExtra("ingredients",recipe.getIngredients());
+                intent.putStringArrayListExtra("steps",recipe.getSteps());
+                //intent.putStringArrayListExtra("nutrition",recipe.getNutrition());
                 holder.itemView.getContext().startActivity(intent);
             }
         });

@@ -67,26 +67,18 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot eachSnapshot: snapshot.getChildren()){
-                    Recipe recipe = new Recipe();
                     if (eachSnapshot.child("name").getValue() == null) break;
                     if (eachSnapshot.child("category").getValue().equals("30 minutes and Under") ){
                         category = findViewById(R.id.category);
                         category.setText("30 minutes and under");
 
-                        //value setting from database
-                        recipe.setOwner(eachSnapshot.child("owner").getValue().toString());
-                        recipe.setName(eachSnapshot.child("name").getValue().toString());
-                        recipe.setDescription(eachSnapshot.child("desc").getValue().toString());
-                        recipe.setTime(Integer.valueOf(String.valueOf(eachSnapshot.child("time").getValue())));
-                        recipe.setLikes(Integer.valueOf(String.valueOf(eachSnapshot.child("likes").getValue())));
-                        recipe.setDifficulty(eachSnapshot.child("difficulty").getValue().toString());
-                        recipe.setServingSize(Integer.valueOf(String.valueOf(eachSnapshot.child("servingSize").getValue())));
-                        recipe.setCategory(eachSnapshot.child("category").getValue().toString());
+                        Recipe r = eachSnapshot.getValue(Recipe.class);
 
-
+                        //recipe.setIngredients(eachSnapshot.child("ingredients").getValue());
+                        //Log.e("string", r.ingredients.get(1));
 
                         Log.d("DB", eachSnapshot.child("time").getValue().toString());
-                        list.add(recipe);
+                        list.add(r);
                     }
                 }
                 homeAdapter = new HomeAdapter(mContext,list);

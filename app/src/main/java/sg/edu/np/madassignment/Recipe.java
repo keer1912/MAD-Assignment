@@ -13,10 +13,10 @@ public class Recipe {
     String description;
     int time;
     boolean timeFormatIsHour;
-    List<String> ingredients;
-    List<String> reqEquipment;
+    ArrayList<String> ingredients;
+    ArrayList<String> reqEquipment;
     int servingSize;
-    List<String> steps;
+    ArrayList<String> steps;
     String category;
     String owner;
     int likes;
@@ -75,19 +75,19 @@ public class Recipe {
         this.timeFormatIsHour = timeFormatIsHour;
     }
 
-    public List<String> getIngredients() {
+    public ArrayList<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(ArrayList<String> ingredients) {
         this.ingredients = ingredients;
     }
 
-    public List<String> getReqEquipment() {
+    public ArrayList<String> getReqEquipment() {
         return reqEquipment;
     }
 
-    public void setReqEquipment(List<String> reqEquipment) {
+    public void setReqEquipment(ArrayList<String> reqEquipment) {
         this.reqEquipment = reqEquipment;
     }
 
@@ -99,11 +99,11 @@ public class Recipe {
         this.servingSize = servingSize;
     }
 
-    public List<String> getSteps() {
+    public ArrayList<String> getSteps() {
         return steps;
     }
 
-    public void setSteps(List<String> steps) {
+    public void setSteps(ArrayList<String> steps) {
         this.steps = steps;
     }
 

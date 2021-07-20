@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -13,8 +14,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeDetail extends AppCompatActivity {
@@ -56,6 +60,10 @@ public class RecipeDetail extends AppCompatActivity {
         String ReceiveRecipeDifficulty = getIntent().getExtras().get("difficulty").toString();
         showRecipeDifficulty = findViewById(R.id.difficulty);
         showRecipeDifficulty.setText(ReceiveRecipeDifficulty);
+
+        ArrayList<String> ar1 =getIntent().getExtras().getStringArrayList("ingredient");
+
+
 
     }
 }
