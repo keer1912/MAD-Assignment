@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -30,6 +31,7 @@ public class RecipeDetail extends AppCompatActivity {
     TextView showRecipeDifficulty;
     TextView showRecipeOwner;
     TextView showIngredients;
+    ListView listView;
 
 
     @Override
@@ -61,7 +63,11 @@ public class RecipeDetail extends AppCompatActivity {
         showRecipeDifficulty = findViewById(R.id.difficulty);
         showRecipeDifficulty.setText(ReceiveRecipeDifficulty);
 
-        ArrayList<String> ar1 =getIntent().getExtras().getStringArrayList("ingredient");
+        ArrayList<String> ar1 =getIntent().getExtras().getStringArrayList("ingredients");
+        listView = findViewById(R.id.listView);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,ar1);
+        listView.setAdapter(adapter);
+        Log.e("string",ar1.get(0));
 
 
 
