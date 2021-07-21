@@ -44,11 +44,11 @@ public class RecipeDetail extends AppCompatActivity {
 
         String ReceiveRecipeLikes = getIntent().getExtras().get("likes").toString();
         showRecipeLikes = findViewById(R.id.numLikes);
-        showRecipeLikes.setText(ReceiveRecipeLikes);
+        showRecipeLikes.setText(ReceiveRecipeLikes + " likes");
 
         String ReceiveRecipeTime = getIntent().getExtras().get("time").toString();
         showRecipeTime = findViewById(R.id.time);
-        showRecipeTime.setText(ReceiveRecipeTime);
+        showRecipeTime.setText(ReceiveRecipeTime + " minutes");
 
         String ReceiveRecipeDifficulty = getIntent().getExtras().get("difficulty").toString();
         showRecipeDifficulty = findViewById(R.id.difficulty);
