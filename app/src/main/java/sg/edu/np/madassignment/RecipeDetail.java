@@ -5,22 +5,13 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecipeDetail extends AppCompatActivity {
 
@@ -63,13 +54,22 @@ public class RecipeDetail extends AppCompatActivity {
         showRecipeDifficulty = findViewById(R.id.difficulty);
         showRecipeDifficulty.setText(ReceiveRecipeDifficulty);
 
-        ArrayList<String> ar1 =getIntent().getExtras().getStringArrayList("ingredients");
-        listView = findViewById(R.id.listView);
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,ar1);
-        listView.setAdapter(adapter);
-        Log.e("string",ar1.get(0));
+        // INGREDIENT RV
+        ArrayList<String> ingredientsList = getIntent().getExtras().getStringArrayList("ingredients");
+        RecyclerView IngredientRecyclerView = findViewById(R.id.ingredientRV);
+        RecipeDetailIngredientAdapter ingredientAdapter = new RecipeDetailIngredientAdapter(ingredientsList);
+        LinearLayoutManager mlm1 = new LinearLayoutManager(this);
+        IngredientRecyclerView.setLayoutManager(mlm1);
+        IngredientRecyclerView.setAdapter(ingredientAdapter);
 
+        //STEPS RV
+        ArrayList<String> stepsList = getIntent().getExtras().getStringArrayList("steps");
+        RecyclerView StepsRecyclerView = findViewById(R.id.stepsRV);
+        RecipeDetailStepsAdapter stepAdapter = new RecipeDetailStepsAdapter(stepsList);
+        LinearLayoutManager mlm2 = new LinearLayoutManager(this);
+        StepsRecyclerView.setLayoutManager(mlm2);
+        StepsRecyclerView.setAdapter(stepAdapter);
 
-
+        //Log.e("string",ingredientsList.get(0));
     }
 }

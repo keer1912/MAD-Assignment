@@ -50,9 +50,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
-
         mAuth = FirebaseAuth.getInstance();
         prepareGooglesignIn();
         //Check existing Google sign in account if user is already signed in
