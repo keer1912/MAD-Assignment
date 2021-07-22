@@ -21,6 +21,7 @@ public class RecipeDetail extends AppCompatActivity {
     TextView showRecipeTime;
     TextView showRecipeDifficulty;
     TextView showRecipeOwner;
+    TextView nutrition1,nutrition2,nutrition3;
     TextView showIngredients;
     ListView listView;
 
@@ -70,6 +71,17 @@ public class RecipeDetail extends AppCompatActivity {
         StepsRecyclerView.setLayoutManager(mlm2);
         StepsRecyclerView.setAdapter(stepAdapter);
 
-        //Log.e("string",ingredientsList.get(0));
+        //Nutrition
+        ArrayList<String> nutritionList = getIntent().getExtras().getStringArrayList("nutrition");
+        nutrition1 = findViewById(R.id.nutrition1);
+        nutrition1.setText(nutritionList.get(0));
+
+        nutrition2 = findViewById(R.id.nutrition2);
+        nutrition2.setText(nutritionList.get(1));
+
+        nutrition3 = findViewById(R.id.nutrition3);
+        nutrition3.setText(nutritionList.get(2));
+
+        Log.e("string",nutritionList.get(0));
     }
 }

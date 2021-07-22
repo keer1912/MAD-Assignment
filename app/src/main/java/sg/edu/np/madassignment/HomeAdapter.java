@@ -36,7 +36,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeVH>{
     public void onBindViewHolder(@NonNull HomeVH holder, int position) {
         Recipe recipe = recipeArrayList.get(position);
         holder.recipeName.setText(recipe.getName());
-        holder.recipeTime.setText(String.valueOf(recipe.getTime()));
+        holder.recipeTime.setText(String.valueOf(recipe.getTime())+ " minutes");
         //Picasso.with(mcontext).load(recipe.getImg()).into(holder.recipeImg);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +51,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeVH>{
                 intent.putExtra("owner",recipe.getOwner());
                 intent.putStringArrayListExtra("ingredients",recipe.getIngredients());
                 intent.putStringArrayListExtra("steps",recipe.getSteps());
-                //intent.putStringArrayListExtra("nutrition",recipe.getNutrition());
+                intent.putStringArrayListExtra("nutrition",recipe.getNutrition());
                 holder.itemView.getContext().startActivity(intent);
             }
         });
