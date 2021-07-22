@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         String FirstTime = preferences.getString("FirstTimeInstall","");
 
         if(FirstTime.equals("Yes")){
-            //if app first time
             Intent intent = new Intent(MainActivity.this,LoginActivity.class);
             startActivity(intent);
         }
