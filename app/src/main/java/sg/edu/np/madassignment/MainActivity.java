@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -24,6 +25,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //SHARED PREFERENCES
+        SharedPreferences preferences = getSharedPreferences("PREFERENCE",MODE_PRIVATE);
+        String FirstTime = preferences.getString("FirstTimeInstall","");
+
+        if(FirstTime.equals("Yes")){
+            //if app first time
+            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(intent);
+        }
+        else{
+            //else..
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("FirstTimeInstall","Yes");
+            editor.apply();
+        }
 
 
         //test
@@ -65,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     private void selectedDots(int position) {
         for (int i = 0; i < dots.length; i++) {
             if (i == position) {
