@@ -37,30 +37,30 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_corner"
         android:fontFamily="@font/poppins"
-        android:text="Button"
+        android:text="22"
         android:textColor="#000000"
         app:backgroundTint="#ECECEC"
         app:layout_constraintEnd_toStartOf="@+id/likeButton"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        android:background="@drawable/rounded_corner"/>
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <Button
         android:id="@+id/likeButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_corner"
         android:fontFamily="@font/poppins"
-        android:text="Button"
+        android:text="690"
         android:textColor="#000000"
         app:backgroundTint="#ECECEC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/recipeButton"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        android:background="@drawable/rounded_corner"/>
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
         android:id="@+id/recipesNum"
@@ -110,5 +110,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_exit_to_app_24" />
+
+    <ListView
+        android:layout_width="411dp"
+        android:layout_height="320dp"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="410dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
