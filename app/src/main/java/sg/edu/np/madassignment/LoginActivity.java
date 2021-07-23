@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser!=null && currentUser.getUid()!=null){
-            Intent intent = new Intent(LoginActivity.this , SplashActivity.class);
+            Intent intent = new Intent(LoginActivity.this , HomeActivity.class);
             startActivity(intent);
         }
     }
