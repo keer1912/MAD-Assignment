@@ -9,35 +9,37 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class HomeAdapter extends RecyclerView.Adapter<HomeVH>{
+public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemVH>{
     ArrayList<Recipe> recipeArrayList;
     Context mcontext;
 
-    public HomeAdapter(Context c,ArrayList<Recipe> input) {
+    public RecipeItemAdapter(Context c, ArrayList<Recipe> input) {
         mcontext = c;
         recipeArrayList = input;
     }
 
     @NonNull
     @Override
-    public HomeVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecipeItemVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View item = LayoutInflater.from(parent.getContext()).inflate(
                 R.layout.activity_home_rv_item,
                 parent,
                 false);
-        return new HomeVH(item);
+        return new RecipeItemVH(item);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeVH holder, int position) {
+    public void onBindViewHolder(@NonNull RecipeItemVH holder, int position) {
         Recipe recipe = recipeArrayList.get(position);
         holder.recipeName.setText(recipe.getName());
         holder.recipeTime.setText(String.valueOf(recipe.getTime())+ " minutes");
-        //Picasso.with(mcontext).load(recipe.getImg()).into(holder.recipeImg);
+        if(recipe.getImg()!=null){
+            Glide.with(mcontext).load(recipe.getImg()).into(holder.recipeImg);
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

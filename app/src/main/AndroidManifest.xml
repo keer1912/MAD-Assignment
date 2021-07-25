@@ -20,7 +20,7 @@
             android:label="@string/title_activity_profile"
             android:theme="@style/Theme.MADAssignment.NoActionBar" />
         <activity android:name=".AddRecipeActivity" />
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".SearchActivity"/>
         <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".OnBoardActivity">

@@ -6,12 +6,12 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class HomeVH extends RecyclerView.ViewHolder {
+public class RecipeItemVH extends RecyclerView.ViewHolder {
     TextView recipeName;
     TextView recipeTime;
     ImageView recipeImg;
 
-    public HomeVH(View itemView) {
+    public RecipeItemVH(View itemView) {
         super(itemView);
         recipeName = itemView.findViewById(R.id.recipeName);
         recipeTime = itemView.findViewById(R.id.recipeTime);
