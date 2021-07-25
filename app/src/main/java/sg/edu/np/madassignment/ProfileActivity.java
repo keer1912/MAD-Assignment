@@ -1,10 +1,17 @@
 package sg.edu.np.madassignment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
     ImageView profilePic;
     TextView email;
     private FirebaseAuth mAuth;
+    private ArrayList<CategoryFavourite> categoryList;
 
 
 
@@ -62,25 +70,82 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         //load category into listview
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        DatabaseReference mDatabase =  firebaseDatabase.getReference().child("recipes");
+        /*
+        Category:
+            1) Breakfast
+            2) Lunch & Dinner
+            3) Beverage
+            4) Appetizers
+            5) Sides
+            6) Desserts
+            7) 30 minutes and Under
+         */
+        categoryList = new ArrayList<>();
+        //Breakfast
+        Drawable d = getResources().getDrawable(R.drawable.breakfast25);
+        categoryList.add(new CategoryFavourite("Breakfast",0,d));
+        //Appetizers
+        d = getResources().getDrawable(R.drawable.appetizer25);
+        categoryList.add(new CategoryFavourite("Appetizers",0,d));
 
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot eachSnapshot: snapshot.getChildren()){
-                    if (eachSnapshot.child("category").getValue().equals("30 minutes and Under") ){
+        //Lunch & Dinner
+        d = getResources().getDrawable(R.drawable.appetizer25);
+        categoryList.add(new CategoryFavourite("Lunch & Dinner",0,d));
 
-                    }
-                }
-            }
+        //Lunch & Dinner
+        d = getResources().getDrawable(R.drawable.appetizer25);
+        categoryList.add(new CategoryFavourite("Beverage",0,d));
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+        //Lunch & Dinner
+        d = getResources().getDrawable(R.drawable.appetizer25);
+        categoryList.add(new CategoryFavourite("Sides",0,d));
 
-            }
+        //Lunch & Dinner
+        d = getResources().getDrawable(R.drawable.appetizer25);
+        categoryList.add(new CategoryFavourite(" Desserts",0,d));
 
-        });
+        //Lunch & Dinner
+        d = getResources().getDrawable(R.drawable.appetizer25);
+        categoryList.add(new CategoryFavourite("30 minutes and Under",0,d));
+
+        // Create the adapter to convert the array to views
+        CategoryAdapter adapter = new CategoryAdapter(this, categoryList);
+        // Attach the adapter to a ListView
+        ListView listView = (ListView) findViewById(R.id.listview_category);
+        listView.setAdapter(adapter);
+
+
     }
 
+}
+
+class CategoryAdapter extends ArrayAdapter<CategoryFavourite> {
+
+    //ArrayList<CategoryFavourite> categoryList;
+
+    public CategoryAdapter(Context context, ArrayList<CategoryFavourite> categoryList) {
+        super(context,0,categoryList);
+        //this.categoryList = categoryList;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // Get the data item for this position
+        CategoryFavourite category = getItem(position);
+        // Check if an existing view is being reused, otherwise inflate the view
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_categoryfav, parent, false);
+        }
+        // Lookup view for data population
+        TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
+        TextView tvCount = (TextView) convertView.findViewById(R.id.tvCount);
+        LinearLayout listview_item = (LinearLayout)convertView.findViewById(R.id.listview_item);
+        // Populate the data into the template view using the data object
+        tvName.setText(category.getCategory());
+        tvCount.setText(category.getNumberOfFavourite() + "");
+        listview_item.setBackground(category.getCategoryDrawable());
+        listview_item.setMinimumHeight(100);
+        // Return the completed view to render on screen
+        return convertView;
+    }
 }

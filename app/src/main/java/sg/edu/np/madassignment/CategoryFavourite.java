@@ -1,10 +1,18 @@
 package sg.edu.np.madassignment;
 
+import android.graphics.drawable.Drawable;
+
 public class CategoryFavourite {
 
     private String category;
     private int numberOfFavourite;
-    private int categoryDrawable;
+    private Drawable categoryDrawable;
+
+    public CategoryFavourite(String category, int numberOfFavourite, Drawable categoryDrawable) {
+        this.category = category;
+        this.numberOfFavourite = numberOfFavourite;
+        this.categoryDrawable = categoryDrawable;
+    }
 
     public String getCategory() {
         return category;
@@ -22,11 +30,11 @@ public class CategoryFavourite {
         this.numberOfFavourite = numberOfFavourite;
     }
 
-    public int getCategoryDrawable() {
+    public Drawable getCategoryDrawable() {
         return categoryDrawable;
     }
 
-    public void setCategoryDrawable(int categoryDrawable) {
+    public void setCategoryDrawable(Drawable categoryDrawable) {
         this.categoryDrawable = categoryDrawable;
     }
 }
