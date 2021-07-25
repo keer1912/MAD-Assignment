@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -24,22 +25,6 @@ public class OnBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //SHARED PREFERENCES
-        SharedPreferences preferences = getSharedPreferences("PREFERENCE",MODE_PRIVATE);
-        String FirstTime = preferences.getString("FirstTimeInstall","");
-
-        if(FirstTime.equals("Yes")){
-            Intent intent = new Intent(OnBoardActivity.this,HomeActivity.class);
-            startActivity(intent);
-        }
-        else{
-            //else..
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("FirstTimeInstall","Yes");
-            editor.apply();
-        }
-
 
         //test
         viewPager_slider = findViewById(R.id.viewpager);
