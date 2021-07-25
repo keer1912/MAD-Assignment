@@ -28,7 +28,7 @@
                 android:layout_height="90dp"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
-                android:background="#FFFFFF"
+                android:background="#CC8787"
                 android:scaleType="fitXY" />
 
             <TextView
