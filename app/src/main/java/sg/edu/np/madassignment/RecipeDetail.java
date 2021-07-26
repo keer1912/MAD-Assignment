@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +31,9 @@ public class RecipeDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_detail);
+        //Shopping list
+        RecipeDetailIngredientAdapter.recipeName = getIntent().getExtras().get("name").toString();
+
 
         String ReceiveRecipeOwner = getIntent().getExtras().get("owner").toString();
         showRecipeOwner = findViewById(R.id.recipeOwner);
@@ -81,7 +85,6 @@ public class RecipeDetail extends AppCompatActivity {
 
         nutrition3 = findViewById(R.id.nutrition3);
         nutrition3.setText(nutritionList.get(2));
-
         Log.e("string",nutritionList.get(0));
     }
 }
