@@ -10,9 +10,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,37 +45,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_rv);
-
-        // BOTTOM NAVIGATION ITEMS
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.Home);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.Home:
-                        return true;
-                    case R.id.Search:
-                        startActivity(new Intent(getApplicationContext(),SearchActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.Add:
-                        startActivity(new Intent(getApplicationContext(),AddRecipeActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.List:
-                        startActivity(new Intent(getApplicationContext(),ShoppingListActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.Profile:
-                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
-            }
-        });
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
@@ -151,6 +122,49 @@ public class HomeActivity extends AppCompatActivity {
 
             }
 
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //Bottom Nav
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.Home);
+
+        FloatingActionButton fabAddRecipe = (FloatingActionButton) findViewById(R.id.fabAdd);
+        fabAddRecipe.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                startActivity(new Intent(getApplicationContext(), AddRecipeActivity.class));
+                                            }
+                                        });
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.Home:
+                        return true;
+                    case R.id.Search:
+                        startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.Add:
+                        startActivity(new Intent(getApplicationContext(), AddRecipeActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.List:
+                        startActivity(new Intent(getApplicationContext(), ShoppingListActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.Profile:
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
         });
     }
 
