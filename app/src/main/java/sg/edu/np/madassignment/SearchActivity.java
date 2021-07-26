@@ -6,13 +6,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,15 +25,15 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class SearchActivity extends AppCompatActivity {
-    private RecyclerView searchResultList;
-    RecipeItemAdapter recipeItemAdapter;
-    private ImageButton searchBtn;
-    private EditText searchField;
+    private RecyclerView rvSearchList;
+    private TextInputEditText searchField;
     DatabaseReference ref;
-    ArrayList<Recipe> list;
+    ArrayList<Search> searchList = new ArrayList<Search>();
     Context mContext;
+    SearchAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,51 +41,69 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         searchField = findViewById(R.id.searchField);
-        searchResultList = findViewById(R.id.searchResultRV);
-        searchBtn = findViewById(R.id.searchBtn);
+        rvSearchList = findViewById(R.id.rvSearchList);
+
+        searchField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
         ref = firebaseDatabase.getReference().child("recipes");
 
-        searchBtn.setOnClickListener(new View.OnClickListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot eachSnapshot : snapshot.getChildren()) {
+                    if(eachSnapshot.child("name").getValue() == null) break;
 
-                String searchText = searchField.getText().toString();
-                firebaseRecipeSearch(searchText);
+                    Search s = new Search();
+                    s.setRecipeId(eachSnapshot.getKey());
+                    s.setName(eachSnapshot.child("name").getValue().toString());
+                    s.setDescription(eachSnapshot.child("description").getValue().toString());
+                    if(eachSnapshot.child("img").getValue() != null) {
+                        Uri uri = Uri.parse(eachSnapshot.child("img").getValue().toString());
+                        s.setImg(uri);
+                    }
+                    Log.d("search", s.getRecipeId() + s.getName() + s.getDescription() + s.getImg());
+                    searchList.add(s);
+                }
+                Collections.shuffle(searchList);
+                adapter = new SearchAdapter(getApplicationContext(), searchList);
+                LinearLayoutManager lm = new LinearLayoutManager(getApplicationContext());
+                rvSearchList.setLayoutManager(lm);
+                rvSearchList.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.e("Database", "Database Cancelled");
             }
         });
-
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        searchResultList.setLayoutManager(llm);
     }
 
-    private void firebaseRecipeSearch(String searchText) {
-        list = new ArrayList<>();
-        Toast.makeText(SearchActivity.this, "Started Search", Toast.LENGTH_LONG).show();
+    private void filter(String text) {
+        ArrayList<Search> filteredList = new ArrayList<>();
 
-        Query firebaseSearchQuery = ref.orderByChild("name").startAt(searchText).endAt(searchText + "\uf8ff");
-        firebaseSearchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot eachSnapshot: snapshot.getChildren()){
-                    Recipe r = eachSnapshot.getValue(Recipe.class);
-
-                    //recipe.setIngredients(eachSnapshot.child("ingredients").getValue());
-                    //Log.e("string", r.ingredients.get(1));
-
-                    Log.d("DB", snapshot.child("time").getValue().toString());
-                    list.add(r);
-                }
-                recipeItemAdapter = new RecipeItemAdapter(mContext,list);
-                searchResultList.setAdapter(recipeItemAdapter);
-                Log.v("TEST", list.toString());
+        for (Search search  : searchList) {
+            if(search.getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(search);
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+        }
 
-            }
-        });
+        adapter.filterList(filteredList);
     }
 
 }
