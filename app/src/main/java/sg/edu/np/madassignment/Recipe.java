@@ -12,7 +12,6 @@ public class Recipe {
     String name;
     String description;
     int time;
-    boolean timeFormatIsHour;
     ArrayList<String> ingredients;
     ArrayList<String> reqEquipment;
     ArrayList<String> nutrition;
@@ -67,14 +66,6 @@ public class Recipe {
 
     public void setTime(int time) {
         this.time = time;
-    }
-
-    public boolean isTimeFormatIsHour() {
-        return timeFormatIsHour;
-    }
-
-    public void setTimeFormatIsHour(boolean timeFormatIsHour) {
-        this.timeFormatIsHour = timeFormatIsHour;
     }
 
     public ArrayList<String> getIngredients() {
