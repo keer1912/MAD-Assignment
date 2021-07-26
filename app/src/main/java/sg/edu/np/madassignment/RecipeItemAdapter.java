@@ -26,7 +26,7 @@ public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemVH>{
     @Override
     public RecipeItemVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View item = LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.activity_home_rv_item,
+                R.layout.recipe_card_item,
                 parent,
                 false);
         return new RecipeItemVH(item);
@@ -47,6 +47,7 @@ public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemVH>{
                 Intent intent = new Intent(holder.itemView.getContext(),RecipeDetail.class);
                 intent.putExtra("name",recipe.getName());
                 intent.putExtra("category",recipe.getCategory());
+                intent.putExtra("time",recipe.getTime());
                 intent.putExtra("time",recipe.getTime());
                 intent.putExtra("difficulty",recipe.getDifficulty());
                 intent.putExtra("likes",recipe.getLikes());
