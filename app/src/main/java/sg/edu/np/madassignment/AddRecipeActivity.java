@@ -210,8 +210,14 @@ public class AddRecipeActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Log.d("Upload", "Img uploaded");
-                        recipe.setImg(imgRef.getDownloadUrl().toString());
-                        ref.child("recipe" + System.currentTimeMillis()).setValue(recipe);
+                        imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                recipe.setImg(uri.toString());
+                                ref.child("recipe" + System.currentTimeMillis()).setValue(recipe);
+                                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                            }
+                        });
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
