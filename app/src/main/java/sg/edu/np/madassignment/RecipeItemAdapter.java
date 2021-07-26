@@ -38,7 +38,9 @@ public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemVH>{
         holder.recipeName.setText(recipe.getName());
         holder.recipeTime.setText(String.valueOf(recipe.getTime())+ " minutes");
         if(recipe.getImg()!=null){
-            Glide.with(mcontext).load(recipe.getImg()).into(holder.recipeImg);
+            if(mcontext!=null) {
+                Glide.with(mcontext).load(recipe.getImg()).into(holder.recipeImg);
+            }
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
