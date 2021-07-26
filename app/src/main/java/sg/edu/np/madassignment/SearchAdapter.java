@@ -1,6 +1,7 @@
 package sg.edu.np.madassignment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,15 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchVH>{
         holder.Name.setText(search.getName());
         holder.Description.setText(search.getDescription());
         holder.Img.setImageURI(search.getImg());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(),RecipeDetail.class);
+                intent.putExtra("id", search.getRecipeId());
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
