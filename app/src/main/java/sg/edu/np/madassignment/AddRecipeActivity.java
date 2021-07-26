@@ -49,6 +49,7 @@ public class AddRecipeActivity extends AppCompatActivity {
     EditText rcpIngredients;
     EditText rcpEquipment;
     EditText rcpSteps;
+    EditText rcpServings;
     Button btnSubmit;
 
     private static final int PICK_IMG_REQUEST = 1;
@@ -91,6 +92,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                 rcpIngredients = (EditText) findViewById(R.id.etIngredients);
                 rcpEquipment = (EditText) findViewById(R.id.etReqEquipment);
                 rcpSteps = (EditText) findViewById(R.id.etSteps);
+                rcpServings = (EditText) findViewById(R.id.etServingSize);
                 TextView ErrMsg = (TextView)findViewById(R.id.tvErrMsg);
 
                 String sName = rcpName.getText().toString();
@@ -100,6 +102,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                 String sIngredients = rcpIngredients.getText().toString();
                 String sEquipment = rcpEquipment.getText().toString();
                 String sSteps = rcpSteps.getText().toString();
+                String sServing = rcpServings.getText().toString();
 
                 // Check for incorrect input
                 InputValidatorHelper inputValidatorHelper = new InputValidatorHelper();
@@ -113,8 +116,11 @@ public class AddRecipeActivity extends AppCompatActivity {
                 } else if (inputValidatorHelper.isNullOrEmpty(sDescription)){
                     ErrMsg.setText("Description required");
                     return;
-                } else if (inputValidatorHelper.isNullOrEmpty(sTime)){
+                } else if (inputValidatorHelper.isNullOrEmpty(sTime)) {
                     ErrMsg.setText("Time required");
+                    return;
+                } else if (inputValidatorHelper.isNumeric(sTime)) {
+                    ErrMsg.setText("Time must be numeric");
                     return;
                 } else if (inputValidatorHelper.isNullOrEmpty(sIngredients)){
                     ErrMsg.setText("Ingredients required");
@@ -125,6 +131,12 @@ public class AddRecipeActivity extends AppCompatActivity {
                 } else if (inputValidatorHelper.isNullOrEmpty(sSteps)){
                     ErrMsg.setText("Steps required");
                     return;
+                } else if (inputValidatorHelper.isNullOrEmpty(sServing)) {
+                    ErrMsg.setText("Servings required");
+                    return;
+                } else if (inputValidatorHelper.isNumeric(sServing)) {
+                ErrMsg.setText("Servings must be numeric");
+                return;
                 }
 
                 //Create Model
@@ -136,6 +148,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                 recipe.setIngredients(new ArrayList<String>(Arrays.asList(sIngredients.split("\n"))));
                 recipe.setReqEquipment(new ArrayList<String>(Arrays.asList(sEquipment.split("\\s*,\\s*"))));
                 recipe.setSteps(new ArrayList<String>(Arrays.asList(sSteps.split("\n"))));
+                recipe.setServingSize(Integer.parseInt(sServing));
                 uploadRecipe(ref, recipe);
             }
         });
