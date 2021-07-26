@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             //show start activity
 
             startActivity(new Intent(MainActivity.this, OnBoardActivity.class));
-            Toast.makeText(MainActivity.this, "First Run", Toast.LENGTH_LONG)
+            Toast.makeText(MainActivity.this, "Welcome to Chef's Book!", Toast.LENGTH_LONG)
                     .show();
         }
         else {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 }
-            }, 5000);
+            }, 3000);
         }
         getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
         .putBoolean("isFirstRun", false).commit();
