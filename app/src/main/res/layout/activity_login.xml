@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/poppins"
-        android:text="App Name"
+        android:text="Chef's Book"
         android:textColor="#101010"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/signInButton"
