@@ -1,4 +1,4 @@
-package sg.edu.np.madassignment;
+package sg.edu.np.madassignment_chefsbook;
 
 import android.view.View;
 import android.widget.CheckBox;

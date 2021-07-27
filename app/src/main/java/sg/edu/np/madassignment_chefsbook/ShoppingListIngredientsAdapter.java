@@ -1,4 +1,4 @@
-package sg.edu.np.madassignment;
+package sg.edu.np.madassignment_chefsbook;
 
 import android.app.AlertDialog;
 import android.content.Context;

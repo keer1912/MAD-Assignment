@@ -1,4 +1,4 @@
-package sg.edu.np.madassignment;
+package sg.edu.np.madassignment_chefsbook;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+
 
 public class ShoppingListIngredients extends AppCompatActivity {
     ShoppingListIngredientsAdapter shoppingListIngredientsAdapter;
