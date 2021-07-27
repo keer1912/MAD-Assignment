@@ -182,6 +182,10 @@
                 android:textAlignment="center"
                 android:textColor="@color/design_default_color_error" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
         </LinearLayout>
     </ScrollView>
 
