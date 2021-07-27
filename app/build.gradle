@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "sg.edu.np.madassignment"
+        applicationId 'sg.edu.np.madassignment_chefsbook'
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
