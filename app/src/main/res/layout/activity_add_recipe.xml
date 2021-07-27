@@ -19,12 +19,23 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/poppins"
+                android:text="Add Recipe"
+                android:textColor="#332743"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
             <ImageView
                 android:id="@+id/addImage"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="30dp"
                 android:background="#FFFFFF"
                 android:clickable="true"
                 android:foreground="@drawable/plus_symbol"
