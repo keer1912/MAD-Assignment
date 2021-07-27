@@ -1,6 +1,8 @@
 package sg.edu.np.madassignment_chefsbook;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -55,8 +57,28 @@ public class ProfileActivity extends AppCompatActivity {
         findViewById(R.id.logOut).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.signOut();
-                startActivity(new Intent(ProfileActivity.this,LoginActivity.class));
+                //sign out
+                findViewById(R.id.logOut).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+                        builder.setMessage("Are you sure you want to log out?")
+                                .setCancelable(false)
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        mAuth.signOut();
+                                        startActivity(new Intent(ProfileActivity.this,LoginActivity.class));
+                                        finish();
+                                    }
+                                })
+                                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        builder.show();
+                    }
+                });
             }
         });
 
