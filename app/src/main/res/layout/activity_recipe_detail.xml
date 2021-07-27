@@ -72,8 +72,8 @@
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imageView6"
+                <ImageButton
+                    android:id="@+id/FavButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

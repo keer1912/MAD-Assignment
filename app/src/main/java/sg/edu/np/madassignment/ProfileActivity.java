@@ -84,28 +84,23 @@ public class ProfileActivity extends AppCompatActivity {
         //Breakfast
         Drawable d = getResources().getDrawable(R.drawable.breakfast25);
         categoryList.add(new CategoryFavourite("Breakfast",0,d));
+        //Lunch & Dinner
+        d = getResources().getDrawable(R.drawable.main25);
+        categoryList.add(new CategoryFavourite("Lunch & Dinner",0,d));
+        //Beverage
+        d = getResources().getDrawable(R.drawable.drink25);
+        categoryList.add(new CategoryFavourite("Beverage",0,d));
         //Appetizers
         d = getResources().getDrawable(R.drawable.appetizer25);
         categoryList.add(new CategoryFavourite("Appetizers",0,d));
-
-        //Lunch & Dinner
-        d = getResources().getDrawable(R.drawable.appetizer25);
-        categoryList.add(new CategoryFavourite("Lunch & Dinner",0,d));
-
-        //Lunch & Dinner
-        d = getResources().getDrawable(R.drawable.appetizer25);
-        categoryList.add(new CategoryFavourite("Beverage",0,d));
-
-        //Lunch & Dinner
-        d = getResources().getDrawable(R.drawable.appetizer25);
+        //Sides
+        d = getResources().getDrawable(R.drawable.side25);
         categoryList.add(new CategoryFavourite("Sides",0,d));
-
-        //Lunch & Dinner
-        d = getResources().getDrawable(R.drawable.appetizer25);
+        //Desserts
+        d = getResources().getDrawable(R.drawable.desserts25);
         categoryList.add(new CategoryFavourite(" Desserts",0,d));
-
-        //Lunch & Dinner
-        d = getResources().getDrawable(R.drawable.appetizer25);
+        //30 minutes and Under
+        d = getResources().getDrawable(R.drawable.under30min25);
         categoryList.add(new CategoryFavourite("30 minutes and Under",0,d));
 
         // Create the adapter to convert the array to views
