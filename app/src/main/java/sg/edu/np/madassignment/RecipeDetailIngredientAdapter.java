@@ -58,11 +58,15 @@ public class RecipeDetailIngredientAdapter extends RecyclerView.Adapter<RecipeDe
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         if (snapshot.hasChild(recipeName)) {
+                            DatabaseReference temref = ref.child("name");
+                            temref.setValue(recipeName);
                             long xy = snapshot.getChildrenCount();
                             DatabaseReference tempref = ref.child(String.valueOf(xy));
                             tempref.setValue(s);
                         }
                         else{
+                            DatabaseReference temref = ref.child("name");
+                            temref.setValue(recipeName);
                             long xy = snapshot.getChildrenCount();
                             DatabaseReference tempref = ref.child(String.valueOf(xy));
                             tempref.setValue(s);

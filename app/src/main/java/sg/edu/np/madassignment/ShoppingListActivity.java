@@ -3,6 +3,7 @@ package sg.edu.np.madassignment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -26,7 +27,6 @@ import java.util.List;
 
 public class ShoppingListActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private ArrayList<ShoppingListItem> tempList;
     ShoppingListAdapter shoppingListAdapter;
     Context context;
 
@@ -41,19 +41,21 @@ public class ShoppingListActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        DatabaseReference mDatabase =  firebaseDatabase.getReference().child("users")
-                .child(user.getUid()).child("shoppinglist");
-        tempList = new ArrayList<>();
+        DatabaseReference mDatabase =  firebaseDatabase.getReference("users").child(user.getUid()).child("shoppinglist");
+
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot eachSnapshot: snapshot.getChildren()){
-                    ShoppingListItem sl = eachSnapshot.getValue(ShoppingListItem.class);
-                    tempList.add(sl);
+                Iterable<DataSnapshot> shoppingList = snapshot.getChildren();
+                ArrayList<ShoppingListItem> shoppingRecipes = new ArrayList<>();
+
+                for (DataSnapshot item : shoppingList){
+                    ShoppingListItem sl = item.getValue(ShoppingListItem.class);
+                    shoppingRecipes.add(sl);
+                    shoppingListAdapter = new ShoppingListAdapter(shoppingRecipes);
+                    rv.setAdapter(shoppingListAdapter);
                 }
 
-                shoppingListAdapter = new ShoppingListAdapter(context, tempList);
-                rv.setAdapter(shoppingListAdapter);
             }
 
             @Override
@@ -61,6 +63,8 @@ public class ShoppingListActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     @Override

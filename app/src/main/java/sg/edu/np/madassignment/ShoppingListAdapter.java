@@ -13,11 +13,9 @@ import java.util.List;
 
 public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListVH>{
     ArrayList<ShoppingListItem> shoppingListItemList;
-    Context context;
 
-    public ShoppingListAdapter(Context c, ArrayList<ShoppingListItem> input) {
+    public ShoppingListAdapter(ArrayList<ShoppingListItem> input) {
         shoppingListItemList = input;
-        context = c;
     }
 
     @NonNull
@@ -34,12 +32,12 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListVH>{
     public void onBindViewHolder(@NonNull ShoppingListVH holder, int position){
         ShoppingListItem sl = shoppingListItemList.get(position);
         holder.txtTitle.setText(sl.name);
-        holder.txtDesc.setText((sl.ingredientsList.size()) + " ingredients remaining");
+        holder.txtDesc.setText(" ingredients remaining");
 
-        /**holder.itemView.setOnClickListener(new View.OnClickListener() {
+        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /* Ingredient List view
+                // Ingredient List view
             }
         });*/
     }
