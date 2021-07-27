@@ -57,20 +57,11 @@ public class RecipeDetailIngredientAdapter extends RecyclerView.Adapter<RecipeDe
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
-                        if (snapshot.hasChild(recipeName)) {
-                            DatabaseReference temref = ref.child("name");
-                            temref.setValue(recipeName);
-                            long xy = snapshot.getChildrenCount();
-                            DatabaseReference tempref = ref.child(String.valueOf(xy));
-                            tempref.setValue(s);
-                        }
-                        else{
-                            DatabaseReference temref = ref.child("name");
-                            temref.setValue(recipeName);
-                            long xy = snapshot.getChildrenCount();
-                            DatabaseReference tempref = ref.child(String.valueOf(xy));
-                            tempref.setValue(s);
-                        }
+                        DatabaseReference temref = ref.child("name");
+                        temref.setValue(recipeName);
+                        long xy = snapshot.child("ingredientsList").getChildrenCount();
+                        DatabaseReference tempref = ref.child("ingredientsList").child(String.valueOf(xy));
+                        tempref.setValue(s);
                     }
 
                     @Override

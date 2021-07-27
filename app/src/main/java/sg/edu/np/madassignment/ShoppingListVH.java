@@ -17,6 +17,5 @@ public class ShoppingListVH extends RecyclerView.ViewHolder{
         txtTitle = listView.findViewById(R.id.txtListTitle);
         txtDesc = listView.findViewById(R.id.txtListIngd);
         img = listView.findViewById(R.id.img_shopping);
-        btn = listView.findViewById(R.id.listButton);
     }
 }

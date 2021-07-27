@@ -24,6 +24,7 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity"/>
         <activity android:name=".ShoppingListActivity"/>
+        <activity android:name=".ShoppingListIngredients"/>
         <activity android:name=".OnBoardActivity">
 
         </activity>
