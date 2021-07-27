@@ -9,7 +9,6 @@ public class Recipe {
     int time;
     ArrayList<String> ingredients;
     ArrayList<String> reqEquipment;
-    ArrayList<String> nutrition;
     int servingSize;
     ArrayList<String> steps;
     String category;
@@ -93,14 +92,6 @@ public class Recipe {
 
     public void setSteps(ArrayList<String> steps) {
         this.steps = steps;
-    }
-
-    public ArrayList<String> getNutrition() {
-        return nutrition;
-    }
-
-    public void setNutrition(ArrayList<String> nutrition) {
-        this.nutrition = nutrition;
     }
 
     public String getOwner() {
