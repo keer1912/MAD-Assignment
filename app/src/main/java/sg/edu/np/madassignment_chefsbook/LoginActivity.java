@@ -59,6 +59,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    public void onBackPressed(){
+
+    }
     private void prepareGooglesignIn(){
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions
