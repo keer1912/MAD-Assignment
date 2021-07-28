@@ -47,17 +47,7 @@ public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemVH>{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(),RecipeDetail.class);
-                intent.putExtra("name",recipe.getName());
-                intent.putExtra("description",recipe.getDescription());
-                intent.putExtra("category",recipe.getCategory());
-                intent.putExtra("time",recipe.getTime());
-                intent.putExtra("time",recipe.getTime());
-                intent.putExtra("difficulty",recipe.getDifficulty());
-                intent.putExtra("likes",recipe.getLikes());
-                intent.putExtra("owner",recipe.getOwner());
-                intent.putExtra("servingSize",recipe.getServingSize());
-                intent.putStringArrayListExtra("ingredients",recipe.getIngredients());
-                intent.putStringArrayListExtra("steps",recipe.getSteps());
+                intent.putExtra("id", recipe.getRecipeId());
                 holder.itemView.getContext().startActivity(intent);
             }
         });

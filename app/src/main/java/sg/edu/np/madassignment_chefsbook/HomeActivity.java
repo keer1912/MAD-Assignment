@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -30,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
     TextView welcomeText;
     TextView userName;
     private FirebaseAuth mAuth;
-
+    Uri ImageUri;
     private ArrayList<Recipe> thirtyMinUnder;
     private ArrayList<Recipe> featuredRecipes;
     RecyclerView recyclerView;
@@ -75,7 +76,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot eachSnapshot: snapshot.getChildren()){
                     if (eachSnapshot.child("name").getValue() == null) break;
-
                     //finding out the num of likes in each recipe inorder to check for the second rv
                     int likesNum = Integer.valueOf(eachSnapshot.child("likes").getValue().toString());
 
@@ -86,10 +86,10 @@ public class HomeActivity extends AppCompatActivity {
                             category.setText("30 minutes and under");
 
                             Recipe r = eachSnapshot.getValue(Recipe.class);
-
+                            r.setRecipeId(eachSnapshot.getKey());
                             //recipe.setIngredients(eachSnapshot.child("ingredients").getValue());
-
-                            Log.d("DB", eachSnapshot.child("time").getValue().toString());
+                            //Log.d("DB", eachSnapshot.child("time").getValue().toString());
+                            //Log.d("Image", r.getImg());
                             thirtyMinUnder.add(r);
                         }
                     }
@@ -98,14 +98,14 @@ public class HomeActivity extends AppCompatActivity {
                         if (featuredRecipes.size()<8){
                             // if recipes have more than certain num of likes , they will make to the featured recipe list instead
                             Recipe r = eachSnapshot.getValue(Recipe.class);
+                            r.setRecipeId(eachSnapshot.getKey());
                             category2 = findViewById(R.id.category2);
                             category2.setText("Featured Recipe");
 
 
                             //recipe.setIngredients(eachSnapshot.child("ingredients").getValue());
                             //Log.e("string", r.ingredients.get(1));
-
-                            Log.d("DB", eachSnapshot.child("time").getValue().toString());
+                            //Log.d("DB", eachSnapshot.child("time").getValue().toString());
                             featuredRecipes.add(r);
                         }
                     }

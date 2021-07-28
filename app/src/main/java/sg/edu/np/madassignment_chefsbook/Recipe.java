@@ -16,11 +16,19 @@ public class Recipe {
     int likes;
     String img;
     String difficulty;
+    String RecipeId;
 
     public Recipe() {
     }
 
     //Getter & Setter
+    public String getRecipeId() {
+        return RecipeId;
+    }
+
+    public void setRecipeId(String RecipeId) {
+        this.RecipeId = RecipeId;
+    }
 
     public String getName() {
         return name;

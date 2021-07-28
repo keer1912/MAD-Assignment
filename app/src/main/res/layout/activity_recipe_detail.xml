@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,9 +23,11 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="301dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="80dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/rounded_corner"
             android:orientation="vertical"
             android:padding="10dp"
@@ -110,7 +111,7 @@
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_margin="16dp"
             android:layout_marginTop="16dp"
             android:gravity="center"
@@ -120,7 +121,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <TextView
-                android:id="@+id/ShowTime"
+                android:id="@+id/ShowServingSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -150,7 +151,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/ShowServingSize"
+                android:id="@+id/ShowTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
