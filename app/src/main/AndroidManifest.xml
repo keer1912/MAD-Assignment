@@ -24,6 +24,7 @@
         <activity android:name="sg.edu.np.madassignment_chefsbook.HomeActivity" />
         <activity android:name="sg.edu.np.madassignment_chefsbook.LoginActivity"/>
         <activity android:name="sg.edu.np.madassignment_chefsbook.ShoppingListActivity"/>
+        <activity android:name="sg.edu.np.madassignment_chefsbook.ShoppingListIngredients"/>
         <activity android:name="sg.edu.np.madassignment_chefsbook.OnBoardActivity">
 
         </activity>

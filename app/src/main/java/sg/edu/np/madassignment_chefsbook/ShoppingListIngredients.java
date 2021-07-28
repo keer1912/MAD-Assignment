@@ -1,8 +1,8 @@
 package sg.edu.np.madassignment_chefsbook;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -13,58 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ShoppingListActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
-    ShoppingListAdapter shoppingListAdapter;
 
+public class ShoppingListIngredients extends AppCompatActivity {
+    ShoppingListIngredientsAdapter shoppingListIngredientsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shoppinglist);
-        RecyclerView rv = findViewById(R.id.shoppingListRV);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        rv.setLayoutManager(linearLayoutManager);
+        setContentView(R.layout.activity_shoppinglist_ingredient);
 
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        DatabaseReference mDatabase =  firebaseDatabase.getReference("users").child(user.getUid()).child("shoppinglist");
-
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ArrayList<ShoppingListItem> shoppingRecipes = new ArrayList<>();
-
-                for (DataSnapshot item : snapshot.getChildren()){
-                    ShoppingListItem sl = item.getValue(ShoppingListItem.class);
-                    if (sl.ingredientsList == null){
-                        item.getRef().removeValue();
-                    }
-                    else{
-                        shoppingRecipes.add(sl);
-                    }
-                }
-                shoppingListAdapter = new ShoppingListAdapter(shoppingRecipes);
-                rv.setAdapter(shoppingListAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
+        ArrayList<String> ingredientsList = getIntent().getExtras().getStringArrayList("ingredientsList");
+        String name = getIntent().getExtras().getString("name");
+        ShoppingListIngredientsAdapter.recipeName = name;
+        RecyclerView siRV = findViewById(R.id.shoppingIngredientRV);
+        shoppingListIngredientsAdapter = new ShoppingListIngredientsAdapter(this,ingredientsList);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        siRV.setLayoutManager(llm);
+        siRV.setAdapter(shoppingListIngredientsAdapter);
     }
 
     @Override
@@ -99,6 +66,8 @@ public class ShoppingListActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.List:
+                        startActivity(new Intent(getApplicationContext(), ShoppingListActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.Profile:
                         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));

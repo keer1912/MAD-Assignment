@@ -1,5 +1,6 @@
 package sg.edu.np.madassignment_chefsbook;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,14 +30,20 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListVH>{
     public void onBindViewHolder(@NonNull ShoppingListVH holder, int position){
         ShoppingListItem sl = shoppingListItemList.get(position);
         holder.txtTitle.setText(sl.name);
-        holder.txtDesc.setText(" ingredients remaining");
+        if (sl.ingredientsList != null){
+            holder.txtDesc.setText(sl.getIngredientsListCount() + " ingredients remaining");
+        }
 
-        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Ingredient List view
+                Intent viewIngredients = new Intent(holder.itemView.getContext(), ShoppingListIngredients.class);
+                viewIngredients.putExtra("ingredientsList", sl.ingredientsList);
+                viewIngredients.putExtra("name",sl.name);
+                holder.itemView.getContext().startActivity(viewIngredients);
             }
-        });*/
+        });
     }
 
     @Override

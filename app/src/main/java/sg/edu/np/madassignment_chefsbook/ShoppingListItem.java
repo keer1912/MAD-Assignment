@@ -16,11 +16,15 @@ public class ShoppingListItem {
         this.name = name;
     }
 
-    public ArrayList<String> getIngredients() {
+    public ArrayList<String> getIngredientsList() {
         return ingredientsList;
     }
 
-    public void setIngredients(ArrayList<String> ingredientsList) {
+    public void setIngredientsList(ArrayList<String> ingredientsList) {
         this.ingredientsList = ingredientsList;
+    }
+
+    public int getIngredientsListCount(){
+        return ingredientsList.size();
     }
 }
