@@ -19,18 +19,24 @@ import java.util.ArrayList;
 
 public class ShoppingListIngredients extends AppCompatActivity {
     ShoppingListIngredientsAdapter shoppingListIngredientsAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shoppinglist_ingredient);
 
         ArrayList<String> ingredientsList = getIntent().getExtras().getStringArrayList("ingredientsList");
+        if (ingredientsList.size() == 0){
+            Intent intent = new Intent(this, ShoppingListActivity.class);
+            this.startActivity(intent);
+        }
         String name = getIntent().getExtras().getString("name");
         ShoppingListIngredientsAdapter.recipeName = name;
         RecyclerView siRV = findViewById(R.id.shoppingIngredientRV);
-        shoppingListIngredientsAdapter = new ShoppingListIngredientsAdapter(this,ingredientsList);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         siRV.setLayoutManager(llm);
+        shoppingListIngredientsAdapter = new ShoppingListIngredientsAdapter(this,ingredientsList);
+        ShoppingListIngredientsAdapter.sLIA = shoppingListIngredientsAdapter;
         siRV.setAdapter(shoppingListIngredientsAdapter);
     }
 

@@ -31,6 +31,9 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListVH>{
         ShoppingListItem sl = shoppingListItemList.get(position);
         holder.txtTitle.setText(sl.name);
         if (sl.ingredientsList != null){
+            if (sl.ingredientsList.contains(null)){
+                while (sl.ingredientsList.remove(null));
+            }
             holder.txtDesc.setText(sl.getIngredientsListCount() + " ingredients remaining");
         }
 

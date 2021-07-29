@@ -118,6 +118,8 @@ public class RecipeDetail extends AppCompatActivity {
                     if (snapshot.child("name").getValue() != null) {
                         if (snapshot.exists()) {
                             Recipe r = snapshot.getValue(Recipe.class);
+                            //Shopping List
+                            RecipeDetailIngredientAdapter.recipeName = r.name;
 
                             showRecipeName.setText(r.name);
                             showRecipeOwner.setText(r.owner);

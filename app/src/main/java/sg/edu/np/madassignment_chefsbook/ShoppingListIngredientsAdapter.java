@@ -24,6 +24,7 @@ import java.util.ArrayList;
 public class ShoppingListIngredientsAdapter extends RecyclerView.Adapter<ShoppingListIngredientsVH>{
     ArrayList<String> ingredientsList;
     Context context;
+    static ShoppingListIngredientsAdapter sLIA;
     private FirebaseAuth mAuth;
     static String recipeName;
 
@@ -56,13 +57,18 @@ public class ShoppingListIngredientsAdapter extends RecyclerView.Adapter<Shoppin
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String num = String.valueOf(position);
+                                Log.v("Tester", num);
                                 mAuth = FirebaseAuth.getInstance();
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
                                 DatabaseReference ref =  firebaseDatabase.getReference("users").child(user.getUid()).child("shoppinglist").child(recipeName).child("ingredientsList").child(num);
+                                int pos = ingredientsList.indexOf(s);
+                                ingredientsList.remove(s);
                                 ref.removeValue();
-                                ingredientsList.remove(position);
+
+                                Log.v("Ingredients",ingredientsList.toString());
                                 Toast.makeText(context, "Removed", Toast.LENGTH_SHORT);
+                                sLIA.notifyItemRemoved(pos);
                             }
                         })
                         .setNegativeButton("Close",null)
