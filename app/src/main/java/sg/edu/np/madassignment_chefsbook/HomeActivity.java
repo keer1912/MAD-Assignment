@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.api.LogDescriptor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -47,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_rv);
+        mContext = getApplicationContext();
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
@@ -88,9 +90,15 @@ public class HomeActivity extends AppCompatActivity {
 
                             Recipe r = eachSnapshot.getValue(Recipe.class);
                             r.setRecipeId(eachSnapshot.getKey());
+
+                            if (eachSnapshot.child("img").getValue() != null){
+                                String img = eachSnapshot.child("img").getValue().toString();
+                                r.setImg(img);
+                                Log.d("DB", img);
+                            }
+
                             //recipe.setIngredients(eachSnapshot.child("ingredients").getValue());
                             //Log.d("DB", eachSnapshot.child("time").getValue().toString());
-                            //Log.d("Image", r.getImg());
                             thirtyMinUnder.add(r);
                         }
                     }
