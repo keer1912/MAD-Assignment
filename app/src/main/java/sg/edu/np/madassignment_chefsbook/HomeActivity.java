@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     TextView welcomeUser;
@@ -124,7 +125,6 @@ public class HomeActivity extends AppCompatActivity {
 
         });
     }
-
     @Override
     protected void onStart() {
         super.onStart();

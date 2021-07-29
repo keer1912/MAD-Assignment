@@ -128,7 +128,6 @@ public class RecipeDetail extends AppCompatActivity {
                             showRecipeServing.setText("Serving Size\n" + r.servingSize);
                             showRecipeDifficulty.setText("Difficulty\n" + r.difficulty);
 
-
                             RecipeDetailIngredientAdapter ingredientAdapter = new RecipeDetailIngredientAdapter(r.ingredients);
                             IngredientRecyclerView.setAdapter(ingredientAdapter);
 
