@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,13 +20,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeDetail extends AppCompatActivity {
 
-    Uri imageUri;
+    ImageView recipeImg;
     TextView showRecipeName;
     TextView showRecipeCategory;
     TextView showRecipeLikes;
@@ -42,6 +44,7 @@ public class RecipeDetail extends AppCompatActivity {
         //Shopping list
         //RecipeDetailIngredientAdapter.recipeName = getIntent().getExtras().get("name").toString();
 
+        recipeImg = findViewById(R.id.recipeImg);
         showRecipeOwner = findViewById(R.id.recipeOwner);
         showRecipeName = findViewById(R.id.Rname);
         showRecipeCategory = findViewById(R.id.catName);
@@ -130,6 +133,10 @@ public class RecipeDetail extends AppCompatActivity {
                             showRecipeServing.setText("Serving Size\n" + r.servingSize);
                             showRecipeDifficulty.setText("Difficulty\n" + r.difficulty);
 
+                            if (snapshot.child("img").getValue() != null) {
+                                String img = snapshot.child("img").getValue().toString();
+                                Picasso.with(getApplicationContext()).load(img).into(recipeImg);
+                            }
                             RecipeDetailIngredientAdapter ingredientAdapter = new RecipeDetailIngredientAdapter(r.ingredients);
                             IngredientRecyclerView.setAdapter(ingredientAdapter);
 
