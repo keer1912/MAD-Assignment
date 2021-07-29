@@ -42,6 +42,7 @@ public class AddRecipeActivity extends AppCompatActivity {
     EditText rcpSteps;
     EditText rcpServings;
     Button btnSubmit;
+    boolean hasimg;
 
     private static final int PICK_IMG_REQUEST = 1;
     Uri mImageUri;
@@ -56,6 +57,7 @@ public class AddRecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
+        hasimg = false;
 
         final FirebaseDatabase db = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
         DatabaseReference ref = db.getReference().child("recipes");
@@ -98,7 +100,10 @@ public class AddRecipeActivity extends AppCompatActivity {
                 // Check for incorrect input
                 InputValidatorHelper inputValidatorHelper = new InputValidatorHelper();
 
-                if (inputValidatorHelper.isNullOrEmpty(sName)){
+                if (!hasimg){
+                    ErrMsg.setText("Image required");
+                    return;
+                } else if (inputValidatorHelper.isNullOrEmpty(sName)){
                     ErrMsg.setText("Name required");
                     return;
                 } else if (inputValidatorHelper.isNullOrEmpty(sCategory)){
@@ -110,7 +115,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                 } else if (inputValidatorHelper.isNullOrEmpty(sTime)) {
                     ErrMsg.setText("Time required");
                     return;
-                } else if (inputValidatorHelper.isNumeric(sTime)) {
+                } else if (!inputValidatorHelper.isNumeric(sTime)) {
                     ErrMsg.setText("Time must be numeric");
                     return;
                 } else if (inputValidatorHelper.isNullOrEmpty(sIngredients)){
@@ -125,7 +130,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                 } else if (inputValidatorHelper.isNullOrEmpty(sServing)) {
                     ErrMsg.setText("Servings required");
                     return;
-                } else if (inputValidatorHelper.isNumeric(sServing)) {
+                } else if (!inputValidatorHelper.isNumeric(sServing)) {
                 ErrMsg.setText("Servings must be numeric");
                 return;
                 }
@@ -184,6 +189,7 @@ public class AddRecipeActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
+        hasimg = true;
         startActivityForResult(intent, PICK_IMG_REQUEST);
     }
 
