@@ -2,6 +2,8 @@ package sg.edu.np.madassignment_chefsbook;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
+import java.net.URL;
 import java.util.ArrayList;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchVH>{
@@ -41,7 +46,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchVH>{
         Search search = data.get(position);
         holder.Name.setText(search.getName());
         holder.Description.setText(search.getDescription());
-        holder.Img.setImageURI(search.getImg());
+        Picasso.with(context).load(search.getImg()).into(holder.Img);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

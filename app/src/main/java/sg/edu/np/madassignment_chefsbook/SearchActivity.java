@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -74,8 +75,7 @@ public class SearchActivity extends AppCompatActivity {
                     s.setName(eachSnapshot.child("name").getValue().toString());
                     s.setDescription(eachSnapshot.child("description").getValue().toString());
                     if(eachSnapshot.child("img").getValue() != null) {
-                        Uri uri = Uri.parse(eachSnapshot.child("img").getValue().toString());
-                        s.setImg(uri);
+                        s.setImg(eachSnapshot.child("img").getValue().toString());
                     }
                     Log.d("search", s.getRecipeId() + s.getName() + s.getDescription() + s.getImg());
                     searchList.add(s);
