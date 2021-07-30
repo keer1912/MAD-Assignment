@@ -5,6 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
+    <!--code for wave animation-->
+    <com.scwang.wave.MultiWaveHeader
+        android:id="@+id/waveHeader"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mwhCloseColor="#e1cef0"
+        app:mwhStartColor="#dfd1eb" />
 
     <ScrollView
         android:id="@+id/scrollView"
