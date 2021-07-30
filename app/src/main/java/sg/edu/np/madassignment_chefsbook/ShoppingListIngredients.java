@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +32,8 @@ public class ShoppingListIngredients extends AppCompatActivity {
             this.startActivity(intent);
         }
         String name = getIntent().getExtras().getString("name");
+        TextView NameIndicator = findViewById(R.id.ShoppingListRecipeName);
+        NameIndicator.setText("Missing ingredients for " + name);
         ShoppingListIngredientsAdapter.recipeName = name;
         RecyclerView siRV = findViewById(R.id.shoppingIngredientRV);
         LinearLayoutManager llm = new LinearLayoutManager(this);
