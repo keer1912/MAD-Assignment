@@ -27,7 +27,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins"
         android:text="TextView"
+        android:textColor="#332743"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/img_shopping"
         app:layout_constraintTop_toTopOf="@+id/img_shopping" />
@@ -37,7 +39,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins"
         android:text="TextView"
+        android:textColor="#3E3E3E"
         app:layout_constraintBottom_toBottomOf="@+id/img_shopping"
         app:layout_constraintStart_toEndOf="@+id/img_shopping" />
 
