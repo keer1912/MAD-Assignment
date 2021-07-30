@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,6 +46,13 @@ public class HomeActivity extends AppCompatActivity {
     RecipeItemAdapter recipeItemAdapter2;
     Context mContext;
 
+    public interface OnGetDataListener {
+        //this is for callbacks
+        void onSuccess(DataSnapshot dataSnapshot);
+        void onStart();
+        void onFailure(DatabaseError error);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +74,6 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView2 = findViewById(R.id.RecyclerView2);
 //      recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
-
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
         DatabaseReference mDatabase =  firebaseDatabase.getReference().child("recipes");
 
@@ -74,10 +82,11 @@ public class HomeActivity extends AppCompatActivity {
         thirtyMinUnder = new ArrayList<>();
         featuredRecipes = new ArrayList<>();
 
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        ReadData(mDatabase, new OnGetDataListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot eachSnapshot: snapshot.getChildren()){
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                //whatever you need to do with the data
+                for(DataSnapshot eachSnapshot: dataSnapshot.getChildren()){
                     if (eachSnapshot.child("name").getValue() == null) break;
                     //finding out the num of likes in each recipe inorder to check for the second rv
                     int likesNum = Integer.valueOf(eachSnapshot.child("likes").getValue().toString());
@@ -125,17 +134,45 @@ public class HomeActivity extends AppCompatActivity {
                 recyclerView2.setAdapter(recipeItemAdapter2);
                 Log.v("TEST", thirtyMinUnder.toString());
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onStart() {
+                //whatever you need to do onStart
+                Log.d("ONSTART", "Started");
 
             }
 
+            @Override
+            public void onFailure(DatabaseError error) {
+
+            }
         });
     }
+
+
+    public void ReadData(DatabaseReference ref ,final OnGetDataListener listener){
+        listener.onStart();
+        ref.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        listener.onSuccess(snapshot);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        listener.onFailure(error);
+                    }
+                }
+        );
+    }
+
+
+
+
     @Override
     protected void onStart() {
         super.onStart();
+
         //Bottom Nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.Home);
