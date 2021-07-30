@@ -46,6 +46,10 @@ public class HomeActivity extends AppCompatActivity {
     RecipeItemAdapter recipeItemAdapter2;
     Context mContext;
 
+    ProgressDialog TempDialog;
+    CountDownTimer mCountDownTimer;
+    int i=0;
+
     public interface OnGetDataListener {
         //this is for callbacks
         void onSuccess(DataSnapshot dataSnapshot);
@@ -92,8 +96,8 @@ public class HomeActivity extends AppCompatActivity {
                     int likesNum = Integer.valueOf(eachSnapshot.child("likes").getValue().toString());
 
                     if (eachSnapshot.child("category").getValue().equals("30 minutes and Under")){
-                        //each list will only have 8 elements
-                        if(thirtyMinUnder.size()<8){
+                        //each list will only have 10 elements
+                        if(thirtyMinUnder.size()<10){
                             category = findViewById(R.id.category);
                             category.setText("30 minutes and under");
 
@@ -112,8 +116,8 @@ public class HomeActivity extends AppCompatActivity {
                         }
                     }
                     else if(likesNum >= 5){
-                        //each list will only have 8 elements
-                        if (featuredRecipes.size()<8){
+                        //each list will only have 10 elements
+                        if (featuredRecipes.size()<10){
                             // if recipes have more than certain num of likes , they will make to the featured recipe list instead
                             Recipe r = eachSnapshot.getValue(Recipe.class);
                             r.setRecipeId(eachSnapshot.getKey());
@@ -146,6 +150,26 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+
+        TempDialog = new ProgressDialog(HomeActivity.this);
+        TempDialog.setCancelable(false);
+        TempDialog.setProgress(i);
+
+
+        TempDialog.show();
+        mCountDownTimer = new CountDownTimer(3000, 1000)
+        {
+            public void onTick(long millisUntilFinished)
+            {
+                TempDialog.setMessage("Retrieving Recipes...");
+            }
+
+            public void onFinish()
+            {
+                TempDialog.dismiss();
+
+            }
+        }.start();
     }
 
 
