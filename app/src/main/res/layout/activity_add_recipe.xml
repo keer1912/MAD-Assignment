@@ -96,7 +96,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="50dp"
                 android:digits="0123456789"
-                android:hint="Time"
+                android:hint="Time (min)"
                 app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText

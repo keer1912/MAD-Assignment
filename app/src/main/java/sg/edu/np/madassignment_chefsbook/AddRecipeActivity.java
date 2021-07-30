@@ -229,7 +229,7 @@ public class AddRecipeActivity extends AppCompatActivity {
 
                                 mAuth = FirebaseAuth.getInstance(); // Get User and set into recipe details
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                recipe.setOwner(user.getUid());
+                                recipe.setOwner(user.getDisplayName());
 
                                 ref.child("recipe" + System.currentTimeMillis()).setValue(recipe);  // Create a "random" recipe title
                                 startActivity(new Intent(getApplicationContext(), HomeActivity.class)); // Return to home page
