@@ -1,5 +1,6 @@
 package sg.edu.np.madassignment_chefsbook;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,13 +8,17 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListVH>{
     ArrayList<ShoppingListItem> shoppingListItemList;
-
-    public ShoppingListAdapter(ArrayList<ShoppingListItem> input) {
+    Context context;
+    public ShoppingListAdapter(Context c, ArrayList<ShoppingListItem> input) {
         shoppingListItemList = input;
+        this.context = c;
     }
 
     @NonNull
@@ -30,6 +35,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListVH>{
     public void onBindViewHolder(@NonNull ShoppingListVH holder, int position){
         ShoppingListItem sl = shoppingListItemList.get(position);
         holder.txtTitle.setText(sl.name);
+        Picasso.with(context).load(sl.img).into(holder.img);
         if (sl.ingredientsList != null){
             if (sl.ingredientsList.contains(null)){
                 while (sl.ingredientsList.remove(null));

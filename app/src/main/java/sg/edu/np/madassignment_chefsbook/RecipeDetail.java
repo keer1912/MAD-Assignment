@@ -123,6 +123,7 @@ public class RecipeDetail extends AppCompatActivity {
                             Recipe r = snapshot.getValue(Recipe.class);
                             //Shopping List
                             RecipeDetailIngredientAdapter.recipeName = r.name;
+                            RecipeDetailIngredientAdapter.recipeID = ReceiveID;
 
                             showRecipeName.setText(r.name);
                             showRecipeOwner.setText(r.owner);
@@ -136,6 +137,9 @@ public class RecipeDetail extends AppCompatActivity {
                             if (snapshot.child("img").getValue() != null) {
                                 String img = snapshot.child("img").getValue().toString();
                                 Picasso.with(getApplicationContext()).load(img).into(recipeImg);
+
+                                //Shopping List
+                                RecipeDetailIngredientAdapter.img = img;
                             }
                             RecipeDetailIngredientAdapter ingredientAdapter = new RecipeDetailIngredientAdapter(r.ingredients);
                             IngredientRecyclerView.setAdapter(ingredientAdapter);

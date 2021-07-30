@@ -23,6 +23,8 @@ public class RecipeDetailIngredientAdapter extends RecyclerView.Adapter<RecipeDe
     ArrayList<String> ingredientList;
     private FirebaseAuth mAuth;
     static String recipeName;
+    static String img;
+    static String recipeID;
 
     public RecipeDetailIngredientAdapter(ArrayList<String> input) {
         this.ingredientList = input;
@@ -50,12 +52,14 @@ public class RecipeDetailIngredientAdapter extends RecyclerView.Adapter<RecipeDe
                 FirebaseUser user = mAuth.getCurrentUser();
                 FirebaseDatabase db = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
                 DatabaseReference ref = db.getReference().child("users")
-                        .child(user.getUid()).child("shoppinglist").child(recipeName);
+                        .child(user.getUid()).child("shoppinglist").child(recipeID);
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         DatabaseReference nameref = ref.child("name");
                         nameref.setValue(recipeName);
+                        DatabaseReference imgref = ref.child("img");
+                        imgref.setValue(img);
                         long xy = snapshot.child("ingredientsList").getChildrenCount();
                         while (snapshot.child("ingredientsList").hasChild(String.valueOf(xy))){
                             xy += 1;

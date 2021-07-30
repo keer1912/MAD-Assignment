@@ -54,7 +54,7 @@ public class ShoppingListActivity extends AppCompatActivity {
                         shoppingRecipes.add(sl);
                     }
                 }
-                shoppingListAdapter = new ShoppingListAdapter(shoppingRecipes);
+                shoppingListAdapter = new ShoppingListAdapter(getApplicationContext(), shoppingRecipes);
                 rv.setAdapter(shoppingListAdapter);
             }
 
