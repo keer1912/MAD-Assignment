@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -15,8 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
@@ -125,6 +128,40 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {  // Bottom Navigation is here so that it loads properly when user presses back
+        super.onStart();
+        //Bottom Nav
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.Profile);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.Home:
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.Search:
+                        startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.Add:
+                        startActivity(new Intent(getApplicationContext(), AddRecipeActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.List:
+                        startActivity(new Intent(getApplicationContext(), ShoppingListActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.Profile:
+                        return true;
+                }
+                return false;
+            }
+        });
+    }
 }
 
 class CategoryAdapter extends ArrayAdapter<CategoryFavourite> {
