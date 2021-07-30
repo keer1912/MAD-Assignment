@@ -8,41 +8,51 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/img_shopping"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="#FFFFFF"
-        android:scaleType="centerCrop"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/txtListTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/poppins"
-        android:text="TextView"
-        android:textColor="#332743"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/img_shopping"
-        app:layout_constraintTop_toTopOf="@+id/img_shopping" />
+        <ImageView
+            android:id="@+id/img_shopping"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#FFFFFF"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/sym_def_app_icon" />
 
-    <TextView
-        android:id="@+id/txtListIngd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/poppins"
-        android:text="TextView"
-        android:textColor="#3E3E3E"
-        app:layout_constraintBottom_toBottomOf="@+id/img_shopping"
-        app:layout_constraintStart_toEndOf="@+id/img_shopping" />
+        <TextView
+            android:id="@+id/txtListTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/poppins"
+            android:text="TextView"
+            android:textColor="#332743"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_shopping"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtListIngd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/poppins"
+            android:text="TextView"
+            android:textColor="#3E3E3E"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_shopping"
+            app:layout_constraintTop_toBottomOf="@+id/txtListTitle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
