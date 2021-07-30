@@ -78,6 +78,7 @@ public class AddRecipeActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                btnSubmit.setEnabled(false);
                 //Get EditText
                 rcpName = (EditText) findViewById(R.id.etName);
                 rcpCategory = (EditText) findViewById(R.id.etCategory);
@@ -104,37 +105,48 @@ public class AddRecipeActivity extends AppCompatActivity {
 
                 if (!hasimg){
                     ErrMsg.setText("Image required");
+                    btnSubmit.setEnabled(true);
                     return;
                 } else if (inputValidatorHelper.isNullOrEmpty(sName)){
                     ErrMsg.setText("Name required");
+                    btnSubmit.setEnabled(true);
                     return;
                 } else if (inputValidatorHelper.isNullOrEmpty(sCategory)){
                     ErrMsg.setText("Category required");
+                    btnSubmit.setEnabled(true);
                     return;
                 } else if (inputValidatorHelper.isNullOrEmpty(sDescription)){
                     ErrMsg.setText("Description required");
+                    btnSubmit.setEnabled(true);
                     return;
                 } else if (inputValidatorHelper.isNullOrEmpty(sTime)) {
                     ErrMsg.setText("Time required");
+                    btnSubmit.setEnabled(true);
                     return;
                 } else if (!inputValidatorHelper.isNumeric(sTime)) {
                     ErrMsg.setText("Time must be numeric");
+                    btnSubmit.setEnabled(true);
                     return;
                 } else if (inputValidatorHelper.isNullOrEmpty(sIngredients)){
                     ErrMsg.setText("Ingredients required");
+                    btnSubmit.setEnabled(true);
                     return;
                 } else if (inputValidatorHelper.isNullOrEmpty(sEquipment)){
                     ErrMsg.setText("Equipment required");
+                    btnSubmit.setEnabled(true);
                     return;
                 } else if (inputValidatorHelper.isNullOrEmpty(sSteps)){
                     ErrMsg.setText("Steps required");
+                    btnSubmit.setEnabled(true);
                     return;
                 } else if (inputValidatorHelper.isNullOrEmpty(sServing)) {
                     ErrMsg.setText("Servings required");
+                    btnSubmit.setEnabled(true);
                     return;
                 } else if (!inputValidatorHelper.isNumeric(sServing)) {
-                ErrMsg.setText("Servings must be numeric");
-                return;
+                    ErrMsg.setText("Servings must be numeric");
+                    btnSubmit.setEnabled(true);
+                    return;
                 }
 
                 //Create Model
@@ -214,6 +226,7 @@ public class AddRecipeActivity extends AppCompatActivity {
     }
 
     private void uploadRecipe(DatabaseReference ref, Recipe recipe) {
+        btnSubmit.setText("uploading...");
 
         StorageReference imgRef = mStorageRef.child("images/" + System.currentTimeMillis() + "." + getFileExtension(mImageUri)); // Create a "random" image file name
 
