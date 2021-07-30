@@ -107,11 +107,20 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/tvIngredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins"
+                android:text="Ingredients"
+                android:textColor="#6c5382" />
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="350dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="50dp"
                 android:hint="Ingredients"
                 android:inputType="textMultiLine"
                 app:hintEnabled="false">
@@ -125,11 +134,20 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/tvEquipment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins"
+                android:text="Equipment"
+                android:textColor="#6c5382" />
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="350dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="50dp"
                 android:hint="Equipment Required"
                 android:inputType="textMultiLine"
                 app:hintEnabled="false">
@@ -139,15 +157,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:hint="Equipment Required \n \nOven,Mixer,Rice Cooker etc." />
+                    android:hint="Equipment Required seperated by , \n \nOven,Mixer,Rice Cooker etc." />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvSteps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins"
+                android:text="Steps"
+                android:textColor="#6c5382" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="350dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="50dp"
                 android:hint="Steps"
                 android:inputType="textMultiLine"
                 app:hintEnabled="false">
@@ -157,7 +184,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:hint="Steps \n \nStep 1: Preheat Oven to 200°C. \nStep 2: Crack an Egg into a mixing bowl and beat it. \nStep 3: Slice 2 Cloves of Garlic. \n..." />
+                    android:hint="Steps seperated by row \n \nStep 1: Preheat Oven to 200°C. \nStep 2: Crack an Egg into a mixing bowl and beat it. \nStep 3: Slice 2 Cloves of Garlic. \n..." />
 
             </com.google.android.material.textfield.TextInputLayout>
 
