@@ -88,6 +88,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                 rcpServings = (EditText) findViewById(R.id.etServingSize);
                 TextView ErrMsg = (TextView)findViewById(R.id.tvErrMsg);
 
+                //Set String Object to check & set to Recipe Object
                 String sName = rcpName.getText().toString();
                 String sCategory = rcpCategory.getText().toString();
                 String sDescription = rcpDescription.getText().toString();
@@ -141,9 +142,9 @@ public class AddRecipeActivity extends AppCompatActivity {
                 recipe.setCategory(sCategory);
                 recipe.setDescription(sDescription);
                 recipe.setTime(Integer.parseInt(sTime));
-                recipe.setIngredients(new ArrayList<String>(Arrays.asList(sIngredients.split("\n"))));
-                recipe.setReqEquipment(new ArrayList<String>(Arrays.asList(sEquipment.split("\\s*,\\s*"))));
-                recipe.setSteps(new ArrayList<String>(Arrays.asList(sSteps.split("\n"))));
+                recipe.setIngredients(new ArrayList<String>(Arrays.asList(sIngredients.split("\n"))));          // Each new line user creates is split
+                recipe.setReqEquipment(new ArrayList<String>(Arrays.asList(sEquipment.split("\\s*,\\s*"))));    // Each Equipment is split by comma
+                recipe.setSteps(new ArrayList<String>(Arrays.asList(sSteps.split("\n"))));                      // Each new line user creates is split
                 recipe.setServingSize(Integer.parseInt(sServing));
                 uploadRecipe(ref, recipe);
             }
@@ -151,7 +152,7 @@ public class AddRecipeActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
+    protected void onStart() {  // Bottom Navigation is here so that it loads properly when user presses back
         super.onStart();
         //Bottom Nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -201,7 +202,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                 && data != null && data.getData() != null){
             mImageUri = data.getData();
 
-            Picasso.with(this).load(mImageUri).into(addImg);
+            Picasso.with(this).load(mImageUri).into(addImg);    // Load image into ImageView after image has been added
         }
     }
 
@@ -213,19 +214,19 @@ public class AddRecipeActivity extends AppCompatActivity {
 
     private void uploadRecipe(DatabaseReference ref, Recipe recipe) {
 
-        StorageReference imgRef = mStorageRef.child("images/" + System.currentTimeMillis() + "." + getFileExtension(mImageUri));
+        StorageReference imgRef = mStorageRef.child("images/" + System.currentTimeMillis() + "." + getFileExtension(mImageUri)); // Create a "random" image file name
 
-        imgRef.putFile(mImageUri)
+        imgRef.putFile(mImageUri)   // Put image into firebase storage
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Log.d("Upload", "Img uploaded");
-                        imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() { // Get Download URL to set in recipe for reference
                             @Override
                             public void onSuccess(Uri uri) {
                                 recipe.setImg(uri.toString());
-                                ref.child("recipe" + System.currentTimeMillis()).setValue(recipe);
-                                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                                ref.child("recipe" + System.currentTimeMillis()).setValue(recipe);  // Create a "random" image title
+                                startActivity(new Intent(getApplicationContext(), HomeActivity.class)); // Return to home page
                             }
                         });
                     }

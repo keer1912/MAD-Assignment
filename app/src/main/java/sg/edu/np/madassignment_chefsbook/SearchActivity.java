@@ -62,25 +62,25 @@ public class SearchActivity extends AppCompatActivity {
         });
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        ref = firebaseDatabase.getReference().child("recipes");
+        ref = firebaseDatabase.getReference().child("recipes"); // ref stores all the recipes
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot eachSnapshot : snapshot.getChildren()) {
-                    if(eachSnapshot.child("name").getValue() == null) break;
+                    if(eachSnapshot.child("name").getValue() == null) break; // if the child is empty (no name) end the loop
 
-                    Search s = new Search();
-                    s.setRecipeId(eachSnapshot.getKey());
-                    s.setName(eachSnapshot.child("name").getValue().toString());
-                    s.setDescription(eachSnapshot.child("description").getValue().toString());
-                    if(eachSnapshot.child("img").getValue() != null) {
-                        s.setImg(eachSnapshot.child("img").getValue().toString());
+                    Search s = new Search();                                                    // Create new search model
+                    s.setRecipeId(eachSnapshot.getKey());                                       // Set Id of recipe to set onClick to redirect to recipe
+                    s.setName(eachSnapshot.child("name").getValue().toString());                // Set Name of recipe
+                    s.setDescription(eachSnapshot.child("description").getValue().toString());  // Set Description of recipe
+                    if(eachSnapshot.child("img").getValue() != null) {                          // Check if image exists, prevents errors if image is not found
+                        s.setImg(eachSnapshot.child("img").getValue().toString());              // Set Image as a url string i.e. https://firebase......
                     }
-                    Log.d("search", s.getRecipeId() + s.getName() + s.getDescription() + s.getImg());
-                    searchList.add(s);
+                    //Log.d("search", s.getRecipeId() + s.getName() + s.getDescription() + s.getImg()); // Debug
+                    searchList.add(s);  // Add image to the array list
                 }
-                Collections.shuffle(searchList);
+                Collections.shuffle(searchList);    // Shuffles array list to show users different recipes at the top
                 adapter = new SearchAdapter(getApplicationContext(), searchList);
                 LinearLayoutManager lm = new LinearLayoutManager(getApplicationContext());
                 rvSearchList.setLayoutManager(lm);
@@ -94,7 +94,7 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-    private void filter(String text) {
+    private void filter(String text) {  // Filter method for search function
         ArrayList<Search> filteredList = new ArrayList<>();
 
         for (Search search  : searchList) {
@@ -107,7 +107,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
+    protected void onStart() {  // Bottom Nav is onStart so when user press back on devices, it will refresh and show the current page they are on instead of the previous page
         super.onStart();
         //Bottom Nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
