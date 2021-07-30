@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -225,7 +226,12 @@ public class AddRecipeActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
                                 recipe.setImg(uri.toString());
-                                ref.child("recipe" + System.currentTimeMillis()).setValue(recipe);  // Create a "random" image title
+
+                                mAuth = FirebaseAuth.getInstance(); // Get User and set into recipe details
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                recipe.setOwner(user.getUid());
+
+                                ref.child("recipe" + System.currentTimeMillis()).setValue(recipe);  // Create a "random" recipe title
                                 startActivity(new Intent(getApplicationContext(), HomeActivity.class)); // Return to home page
                             }
                         });
