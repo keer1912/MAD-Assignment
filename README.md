@@ -39,8 +39,6 @@ Assited in App Testing
 [Our app on Google Play Store](https://play.google.com/store/apps/details?id=sg.edu.np.madassignment_chefsbook)
 
 ### Guide
-[Onboarding](https://github.com/keer1912/MAD-Assignment#onboarding-page) | 
-
 [Home](https://github.com/keer1912/MAD-Assignment#home) | 
 [Recipe View](https://github.com/keer1912/MAD-Assignment#recipe-view) | 
 [Search](https://github.com/keer1912/MAD-Assignment#search) | 
