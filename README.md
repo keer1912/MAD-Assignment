@@ -12,7 +12,24 @@ This is a recipe app that allows you to search for recipes and upload your own r
 Add recipe page
 
 Search recipe page
+
+Helped members to debug & solve errors when needed
+
+Assited in App Testing
+
 ### Keerthana
+Initial Firebase Implementation
+
+OnBoard page 
+
+Home Page
+
+Recipe Viewing
+
+Standardised UI across app
+
+Assited in App Testing
+
 
 ### Jing Wen
 
@@ -22,6 +39,7 @@ Search recipe page
 [Our app on Google Play Store](https://play.google.com/store/apps/details?id=sg.edu.np.madassignment_chefsbook)
 
 ### Guide
+[Onboarding](https://github.com/keer1912/MAD-Assignment#onboarding-page) | 
 
 [Home](https://github.com/keer1912/MAD-Assignment#home) | 
 [Recipe View](https://github.com/keer1912/MAD-Assignment#recipe-view) | 
@@ -30,9 +48,32 @@ Search recipe page
 [Shopping List](https://github.com/keer1912/MAD-Assignment#shopping-list) | 
 [Profile](https://github.com/keer1912/MAD-Assignment#profile)
 
+#### Onboarding Page
+This is a page that introduces Chefs' Book to first time users. Onboarding page serves as walkthrough page that demonstrates what the app does and set our users' expectations of the app. This Onboarding page has been implemented in a way that it checks for `first time users`. 
+
+<p float="left">
+  <img src="/README_Images/onboardpage1?raw=true" width="200">
+  <img src="/README_Images/onboardpage2?raw=true" width="200">
+  <img src="/README_Images/onboardpage3?raw=true" width="200">
+</p>
+
+#### Login
+Proceeding from the Onboarding page , users will be greeted by a login page. Chefs' Book has integrated Google Sign-in into it's app. Our login utilises Firebase Authentication to autheticate our users' using their Google Accounts.
+
+<img src="/README_Images/loginPage?raw=true" width="200">
+
 #### Home
+Once our users' have been authenticated , they will be led to the Home Page. In this page they will be able to see their names as well as various recipes curated for them. Featured recipes that allows them to view recipes that well liked by others as well as a popular category among many people nowadays , 30 minutes and Under.
+
+<img src="/README_Images/homepage?raw=true" width="200">
 
 #### Recipe View
+When Chefs' Book users click on the recipe card as shown in the _Home Page_ or even _Search_ , they are led to the page where they will be able to view the recipe and the details. Details such as the recipe name , recipe owner , Ingredients , Steps and more!]
+
+<p float="left">
+  <img src="/README_Images/recipeDetail?raw=true" width="200">
+  <img src="/README_Images/recipeDetail2?raw=true" width="200">
+</p>
 
 #### Search
 
