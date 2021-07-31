@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_grey">#d4d4d4</color>
     <color name="purple">#66538a</color>
+    <color name="tabcolorActive">#413352</color>
+    <color name="tabcolorInActive">#858585</color>
+
 </resources>

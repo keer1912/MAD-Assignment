@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,9 +13,11 @@
 
         <ImageView
             android:id="@+id/recipeImg"
-            android:layout_width="408dp"
-            android:layout_height="198dp"
+            android:layout_width="fill_parent"
+            android:layout_height="237dp"
+            android:adjustViewBounds="true"
             android:background="#FFFFFF"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -24,9 +25,11 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="80dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/rounded_corner"
             android:orientation="vertical"
             android:padding="10dp"
@@ -36,33 +39,45 @@
 
             <TextView
                 android:id="@+id/recipeOwner"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins"
                 android:text="TextView"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/Rname"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:fontFamily="@font/poppins"
                 android:text="TextView"
+                android:textColor="#332743"
                 android:textSize="26sp" />
 
             <TextView
                 android:id="@+id/catName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="#202020" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="TextView"
+                android:textColor="#202020" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -88,44 +103,8 @@
                     android:layout_marginRight="25dp"
                     android:fontFamily="@font/poppins"
                     android:gravity="center"
-                    android:text="TextView" />
-
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_baseline_access_time_24" />
-
-                <TextView
-                    android:id="@+id/time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginRight="25dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center"
-                    android:text="TextView" />
-
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_baseline_check_24" />
-
-                <TextView
-                    android:id="@+id/difficulty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="#202020" />
 
             </LinearLayout>
 
@@ -134,8 +113,9 @@
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -143,40 +123,50 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <TextView
-                android:id="@+id/nutrition1"
-                android:layout_width="115dp"
-                android:layout_height="88dp"
+                android:id="@+id/ShowServingSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/rounded_corner_nutrition"
+                android:drawableTop="@drawable/ic_baseline_room_service_24"
+                android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins"
-                android:gravity="center"
+                android:gravity="center|top"
                 android:padding="5dp"
                 android:text="TextView"
+                android:textColor="#202020"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/nutrition2"
-                android:layout_width="115dp"
-                android:layout_height="88dp"
+                android:id="@+id/ShowDifficulty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/rounded_corner_nutrition"
+                android:drawableTop="@drawable/ic_baseline_check_24"
+                android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins"
-                android:gravity="center"
+                android:gravity="center|top"
                 android:padding="5dp"
                 android:text="TextView"
+                android:textColor="#202020"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/nutrition3"
-                android:layout_width="115dp"
-                android:layout_height="88dp"
+                android:id="@+id/ShowTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/rounded_corner_nutrition"
+                android:drawableTop="@drawable/ic_baseline_timer_24"
+                android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins"
-                android:gravity="center"
+                android:gravity="center|top"
                 android:padding="5dp"
                 android:text="TextView"
+                android:textColor="#202020"
                 android:textSize="16sp" />
+
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -184,7 +174,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

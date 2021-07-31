@@ -1,41 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="sg.edu.np.madassignment">
+    package="sg.edu.np.madassignment_chefsbook">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/chef"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/chef"
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAssignment">
-        <activity android:name=".FavRecipe" />
-        <activity android:name=".FavRecipeVH"></activity>
         <activity
-            android:name=".RecipeDetail"
+            android:name="sg.edu.np.madassignment_chefsbook.RecipeDetail"
             android:label="@string/title_activity_recipe_detail"
             android:theme="@style/Theme.MADAssignment.NoActionBar" />
         <activity
-            android:name=".ProfileActivity"
+            android:name="sg.edu.np.madassignment_chefsbook.ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:theme="@style/Theme.MADAssignment.NoActionBar" >
+            android:theme="@style/Theme.MADAssignment.NoActionBar" />
+        <activity android:name="sg.edu.np.madassignment_chefsbook.AddRecipeActivity" />
+        <activity android:name="sg.edu.np.madassignment_chefsbook.SearchActivity"/>
+        <activity android:name="sg.edu.np.madassignment_chefsbook.HomeActivity" />
+        <activity android:name="sg.edu.np.madassignment_chefsbook.LoginActivity"/>
+        <activity android:name="sg.edu.np.madassignment_chefsbook.ShoppingListActivity"/>
+        <activity android:name="sg.edu.np.madassignment_chefsbook.ShoppingListIngredients"/>
+        <activity android:name="sg.edu.np.madassignment_chefsbook.OnBoardActivity">
+
+        </activity>
+        <activity android:name="sg.edu.np.madassignment_chefsbook.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".AddRecipeActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ShoppingListActivity" />
-
-        <activity android:name=".OnBoardActivity"></activity>
-        <activity android:name=".MainActivity">
-
         </activity>
 
         <meta-data
