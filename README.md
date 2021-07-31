@@ -9,26 +9,26 @@ This is a recipe app that allows you to search for recipes and upload your own r
 
 ## Contributions
 ### Xavier
-Add recipe page
+* Add recipe page
 
-Search recipe page
+* Search recipe page
 
-Helped members to debug & solve errors when needed
+* Helped members to debug & solve errors when needed
 
-Assited in App Testing
+* Assited in App Testing
 
 ### Keerthana
-Initial Firebase Implementation
+* Initial Firebase Implementation
 
-OnBoard page 
+* OnBoard page 
 
-Home Page
+* Home Page
 
-Recipe Viewing
+* Recipe Viewing
 
-Standardised UI across app
+* Standardised UI across app
 
-Assited in App Testing
+* Bottom Navigation Implementation
 
 
 ### Jing Wen
@@ -47,7 +47,7 @@ Assited in App Testing
 [Profile](https://github.com/keer1912/MAD-Assignment#profile)
 
 #### Onboarding Page
-This is a page that introduces Chefs' Book to first time users. Onboarding page serves as walkthrough page that demonstrates what the app does and set our users' expectations of the app. This Onboarding page has been implemented in a way that it checks for `first time users`. 
+This is a page that introduces Chefs' Book to first time users. Onboarding page serves as `walkthrough` page that demonstrates what the app does and set our users' expectations of the app. This Onboarding page has been implemented in a way that it checks for *first time users*. 
 
 <p float="left">
   <img src="/README_Images/onboardpage1.png?raw=true" width="200">
@@ -56,17 +56,17 @@ This is a page that introduces Chefs' Book to first time users. Onboarding page 
 </p>
 
 #### Login
-Proceeding from the Onboarding page , users will be greeted by a login page. Chefs' Book has integrated Google Sign-in into it's app. Our login utilises Firebase Authentication to autheticate our users' using their Google Accounts.
+Proceeding from the Onboarding page , users will be greeted by the `login` page. Chefs' Book has integrated `Google Sign-in` into it's app. Our login utilises `Firebase` Authentication to autheticate our users' using their Google Accounts.
 
 <img src="/README_Images/loginPage.png?raw=true" width="200">
 
 #### Home
-Once our users' have been authenticated , they will be led to the Home Page. In this page they will be able to see their names as well as various recipes curated for them. Featured recipes that allows them to view recipes that well liked by others as well as a popular category among many people nowadays , 30 minutes and Under.
+Once our users' have been authenticated , they will be led to the Home Page. In this page they will be able to see their names as well as various recipes curated for them. Featured recipes that allows them to `view` recipes that well liked by others as well as a popular category among many people nowadays , 30 minutes and Under.
 
 <img src="/README_Images/homepage.png?raw=true" width="200">
 
 #### Recipe View
-When Chefs' Book users click on the recipe card as shown in the _Home Page_ or even _Search_ , they are led to the page where they will be able to view the recipe and the details. Details such as the recipe name , recipe owner , Ingredients , Steps and more!
+When Chefs' Book users click on the recipe card as shown in the _Home Page_ or even _Search_ , they are led to the page where they will be able to view the recipe and the details. Details such as the recipe `name` , recipe `owner` , `Ingredients` , `Steps` and more!
 
 <p float="left">
   <img src="/README_Images/recipeDetail.png?raw=true" width="200">
