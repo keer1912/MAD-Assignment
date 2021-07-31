@@ -34,13 +34,21 @@ Start by clicking the floating Add button in the middle of the bottom navigation
 
 <img src="/README_Images/Screenshot_1627746290.png?raw=true" width="200">
 
-Next, Click on Upload Recipe and select the image you want to upload.
+Next, Click on `Upload Recipe` and select the image you want to upload.
 
 <img src="/README_Images/Screenshot_1627747817.png?raw=true" width="200">
-
 <img src="/README_Images/Screenshot_1627747823.png?raw=true" width="200">
-
 <img src="/README_Images/Screenshot_1627747826.png?raw=true" width="200">
+
+Type in your Recipe's `Name`, it's `category` and a short `Description`. Your Recipe Name has a limit of 50 characters.
+
+<img src="/README_Images/Screenshot_1627747900.png?raw=true" width="200">
+
+Enter the `Time` in minutes using index numbers, decimals or other characters will be denied.
+
+List the `ingredients` your recipe require and the amount required \(not shown\) and seperate by pressing Enter
+
+<img src="/README_Images/Screenshot_1627747961.png?raw=true" width="200">
 
 #### Shopping List Page
 
