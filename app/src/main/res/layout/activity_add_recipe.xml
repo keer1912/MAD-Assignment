@@ -35,6 +35,7 @@
         android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/waveHeader">
@@ -51,9 +52,20 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
                 android:background="#FFFFFF"
-                android:clickable="true"
-                android:foreground="@drawable/plus_symbol"
-                app:srcCompat="@drawable/rounded_corner" />
+                android:clickable="false"
+                android:hapticFeedbackEnabled="false"
+                app:srcCompat="@drawable/ic_baseline_room_service_24" />
+
+            <Button
+                android:id="@+id/btnUploadImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins"
+                android:text="Upload Image"
+                android:textAlignment="center"
+                app:backgroundTint="#6c5382" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -236,7 +248,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="100dp" />
+                android:layout_height="140dp" />
 
         </LinearLayout>
     </ScrollView>
