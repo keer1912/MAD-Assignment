@@ -23,13 +23,20 @@ Search recipe page
 
 ### Guide
 
-#### Home Page
+[Home](https://github.com/keer1912/MAD-Assignment#home) | 
+[Recipe View](https://github.com/keer1912/MAD-Assignment#recipe-view) | 
+[Search](https://github.com/keer1912/MAD-Assignment#search) | 
+[Add Recipe](https://github.com/keer1912/MAD-Assignment#add-recipe) | 
+[Shopping List](https://github.com/keer1912/MAD-Assignment#shopping-list) | 
+[Profile](https://github.com/keer1912/MAD-Assignment#profile)
 
-#### Recipe View Page
+#### Home
 
-#### Search Page
+#### Recipe View
 
-#### Add Recipe Page
+#### Search
+
+#### Add Recipe
 Start by clicking the floating Add button in the middle of the bottom navigation.
 
 <img src="/README_Images/Screenshot_1627746290.png?raw=true" width="200">
@@ -65,6 +72,6 @@ Andddd... Walah! Your recipe is now uploaded into our App!
 <img src="/README_Images/Screenshot_1627748137.png?raw=true" width="200">
 <img src="/README_Images/Screenshot_1627748140.png?raw=true" width="200">
 
-#### Shopping List Page
+#### Shopping List
 
-#### Profile Page
+#### Profile
