@@ -66,7 +66,7 @@ Once our users' have been authenticated , they will be led to the Home Page. In 
 <img src="/README_Images/homepage.png?raw=true" width="200">
 
 #### Recipe View
-When Chefs' Book users click on the recipe card as shown in the _Home Page_ or even _Search_ , they are led to the page where they will be able to view the recipe and the details. Details such as the recipe name , recipe owner , Ingredients , Steps and more!]
+When Chefs' Book users click on the recipe card as shown in the _Home Page_ or even _Search_ , they are led to the page where they will be able to view the recipe and the details. Details such as the recipe name , recipe owner , Ingredients , Steps and more!
 
 <p float="left">
   <img src="/README_Images/recipeDetail.png?raw=true" width="200">
