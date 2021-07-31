@@ -10,6 +10,7 @@ This is a recipe app that allows you to search for recipes and upload your own r
 ## Contributions
 ### Xavier
 Add recipe page
+
 Search recipe page
 ### Keerthana
 
