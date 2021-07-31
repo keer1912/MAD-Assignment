@@ -30,6 +30,9 @@ Search recipe page
 #### Search Page
 
 #### Add Recipe Page
+Start by clicking the floating Add button in the middle of the bottom navigation
+
+![Home page](/README_Images/Screenshot_1627746290.png?raw=true)
 
 #### Shopping List Page
 

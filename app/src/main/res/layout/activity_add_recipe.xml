@@ -51,7 +51,6 @@
                 android:layout_height="300dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
-                android:background="#FFFFFF"
                 android:clickable="false"
                 android:hapticFeedbackEnabled="false"
                 app:srcCompat="@drawable/ic_baseline_room_service_24" />
