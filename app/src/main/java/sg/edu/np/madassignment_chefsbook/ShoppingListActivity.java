@@ -3,6 +3,7 @@ package sg.edu.np.madassignment_chefsbook;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -31,39 +32,6 @@ public class ShoppingListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shoppinglist);
-        RecyclerView rv = findViewById(R.id.shoppingListRV);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        rv.setLayoutManager(linearLayoutManager);
-
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        DatabaseReference mDatabase =  firebaseDatabase.getReference("users").child(user.getUid()).child("shoppinglist");
-
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ArrayList<ShoppingListItem> shoppingRecipes = new ArrayList<>();
-
-                for (DataSnapshot item : snapshot.getChildren()){
-                    ShoppingListItem sl = item.getValue(ShoppingListItem.class);
-                    if (sl.ingredientsList == null){
-                        item.getRef().removeValue();
-                    }
-                    else{
-                        shoppingRecipes.add(sl);
-                    }
-                }
-                shoppingListAdapter = new ShoppingListAdapter(getApplicationContext(), shoppingRecipes);
-                rv.setAdapter(shoppingListAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
 
     }
 
@@ -108,5 +76,46 @@ public class ShoppingListActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        RecyclerView rv = findViewById(R.id.shoppingListRV);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        rv.setLayoutManager(linearLayoutManager);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        DatabaseReference mDatabase =  firebaseDatabase.getReference("users").child(user.getUid()).child("shoppinglist");
+
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<ShoppingListItem> shoppingRecipes = new ArrayList<>();
+
+                for (DataSnapshot item : snapshot.getChildren()){
+                    ShoppingListItem sl = item.getValue(ShoppingListItem.class);
+                    if (sl.ingredientsList == null){
+                        item.getRef().removeValue();
+                    }
+                    else{
+                        Log.v("Shopping List",item.getKey());
+                        sl.setRecipeId(item.getKey());
+                        shoppingRecipes.add(sl);
+                    }
+                }
+                shoppingListAdapter = new ShoppingListAdapter(getApplicationContext(), shoppingRecipes);
+                rv.setAdapter(shoppingListAdapter);
+                shoppingListAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }
