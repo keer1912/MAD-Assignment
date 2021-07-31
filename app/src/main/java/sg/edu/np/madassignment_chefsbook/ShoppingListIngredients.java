@@ -32,9 +32,11 @@ public class ShoppingListIngredients extends AppCompatActivity {
             this.startActivity(intent);
         }
         String name = getIntent().getExtras().getString("name");
+        String ID = getIntent().getExtras().getString("ID");
         TextView NameIndicator = findViewById(R.id.ShoppingListRecipeName);
         NameIndicator.setText("Missing ingredients for " + name);
         ShoppingListIngredientsAdapter.recipeName = name;
+        ShoppingListIngredientsAdapter.ID = ID;
         RecyclerView siRV = findViewById(R.id.shoppingIngredientRV);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         siRV.setLayoutManager(llm);
