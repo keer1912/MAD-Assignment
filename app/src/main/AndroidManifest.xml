@@ -11,6 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAssignment">
+        <activity android:name=".FavRecipe" />
+        <activity android:name=".FavRecipeVH"></activity>
         <activity
             android:name=".RecipeDetail"
             android:label="@string/title_activity_recipe_detail"
@@ -18,21 +20,22 @@
         <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:theme="@style/Theme.MADAssignment.NoActionBar" />
-        <activity android:name=".AddRecipeActivity" />
-        <activity android:name=".SearchActivity"/>
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".ShoppingListActivity"/>
-        <activity android:name=".OnBoardActivity">
-
-        </activity>
-        <activity android:name=".MainActivity">
+            android:theme="@style/Theme.MADAssignment.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".AddRecipeActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ShoppingListActivity" />
+
+        <activity android:name=".OnBoardActivity"></activity>
+        <activity android:name=".MainActivity">
+
         </activity>
 
         <meta-data

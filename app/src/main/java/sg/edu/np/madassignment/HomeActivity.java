@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -73,9 +74,10 @@ public class HomeActivity extends AppCompatActivity {
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 for(DataSnapshot eachSnapshot: snapshot.getChildren()){
                     if (eachSnapshot.child("name").getValue() == null) break;
-
+                    Toast.makeText(getApplicationContext(),eachSnapshot.child("name").getValue().toString(),Toast.LENGTH_LONG).show();
                     //finding out the num of likes in each recipe inorder to check for the second rv
                     int likesNum = Integer.valueOf(eachSnapshot.child("likes").getValue().toString());
 

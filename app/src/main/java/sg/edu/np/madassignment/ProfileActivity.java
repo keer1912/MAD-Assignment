@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -109,6 +110,14 @@ public class ProfileActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.listview_category);
         listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(view.getContext(), FavRecipe.class);
+                intent.putExtra("name", categoryList.get(position).getCategory());
+                startActivity(intent);
+            }
+        });
 
     }
 
