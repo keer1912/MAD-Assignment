@@ -7,12 +7,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 public class RecipeDetail extends AppCompatActivity {
@@ -36,6 +42,9 @@ public class RecipeDetail extends AppCompatActivity {
     TextView showRecipeServing;
     TextView showRecipeOwner;
     TextView showRecipeDesc;
+    ImageButton favButton;
+    private FirebaseAuth mAuth;
+    ArrayList<Recipe> favRecipeArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +62,8 @@ public class RecipeDetail extends AppCompatActivity {
         showRecipeTime = findViewById(R.id.ShowTime);
         showRecipeServing = findViewById(R.id.ShowServingSize);
         showRecipeDifficulty = findViewById(R.id.ShowDifficulty);
+        favButton = findViewById(R.id.FavButton);
+        favRecipeArrayList = new ArrayList<Recipe>();
 
 
         /*String ReceiveRecipeOwner = getIntent().getExtras().get("owner").toString();
@@ -154,6 +165,60 @@ public class RecipeDetail extends AppCompatActivity {
 
             }
 
+        });
+
+        //get user
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if(user!= null) {
+            String UID = user.getUid();
+            mDatabase =  firebaseDatabase.getReference().child("users").child(UID).child("Favourite");
+
+            mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    if(snapshot.getValue() != null){
+                        //Creating a HashMap object
+
+                        favRecipeArrayList = (ArrayList<Recipe>) snapshot.getValue();
+                    } else {
+                        favRecipeArrayList = new ArrayList<Recipe>();
+                    }
+
+                }
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
+        favButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if(user!= null){
+                    String UID = user.getUid();
+                    //firebase insertion of
+                    DatabaseReference mDatabase =  firebaseDatabase.getReference().child("users").child(UID).child("Favourite");
+
+                    if(!favRecipeArrayList.contains(ReceiveID)){
+
+                        favRecipeArrayList.add(new Recipe(ReceiveID, showRecipeCategory.getText().toString()));
+                    }
+                    mDatabase.setValue(favRecipeArrayList);
+
+
+
+                }
+
+
+            }
         });
 
     }

@@ -2,7 +2,9 @@ package sg.edu.np.madassignment_chefsbook;
 
 import android.graphics.drawable.Drawable;
 
-public class CategoryFavourite {
+import java.io.Serializable;
+
+public class CategoryFavourite implements Serializable {
 
     private String category;
     private int numberOfFavourite;

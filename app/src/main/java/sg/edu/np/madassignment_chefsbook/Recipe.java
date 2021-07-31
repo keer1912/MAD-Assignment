@@ -21,6 +21,11 @@ public class Recipe {
     public Recipe() {
     }
 
+    public Recipe(String name, String category) {
+        this.name = name;
+        this.category = category;
+    }
+
     //Getter & Setter
     public String getRecipeId() {
         return RecipeId;

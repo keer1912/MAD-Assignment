@@ -18,7 +18,11 @@
         <activity
             android:name="sg.edu.np.madassignment_chefsbook.ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:theme="@style/Theme.MADAssignment.NoActionBar" />
+            android:theme="@style/Theme.MADAssignment.NoActionBar" >
+
+        </activity>
+
+        <activity android:name="sg.edu.np.madassignment_chefsbook.FavRecipe"/>
         <activity android:name="sg.edu.np.madassignment_chefsbook.AddRecipeActivity" />
         <activity android:name="sg.edu.np.madassignment_chefsbook.SearchActivity"/>
         <activity android:name="sg.edu.np.madassignment_chefsbook.HomeActivity" />
@@ -26,7 +30,6 @@
         <activity android:name="sg.edu.np.madassignment_chefsbook.ShoppingListActivity"/>
         <activity android:name="sg.edu.np.madassignment_chefsbook.ShoppingListIngredients"/>
         <activity android:name="sg.edu.np.madassignment_chefsbook.OnBoardActivity">
-
         </activity>
         <activity android:name="sg.edu.np.madassignment_chefsbook.MainActivity">
             <intent-filter>
