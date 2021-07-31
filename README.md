@@ -32,7 +32,7 @@ Search recipe page
 #### Add Recipe Page
 Start by clicking the floating Add button in the middle of the bottom navigation
 
-![Home page](/README_Images/Screenshot_1627746290.png?raw=true)
+![Home page](/README_Images/Screenshot_1627746290.png?raw=true | width=100)
 
 #### Shopping List Page
 
