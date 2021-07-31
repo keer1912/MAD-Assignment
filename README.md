@@ -30,9 +30,17 @@ Search recipe page
 #### Search Page
 
 #### Add Recipe Page
-Start by clicking the floating Add button in the middle of the bottom navigation
+Start by clicking the floating Add button in the middle of the bottom navigation.
 
-<img src="/README_Images/Screenshot_1627746290.png?raw=true" width="100">
+<img src="/README_Images/Screenshot_1627746290.png?raw=true" width="200">
+
+Next, Click on Upload Recipe and select the image you want to upload.
+
+<img src="/README_Images/Screenshot_1627747817.png?raw=true" width="200">
+
+<img src="/README_Images/Screenshot_1627747823.png?raw=true" width="200">
+
+<img src="/README_Images/Screenshot_1627747826.png?raw=true" width="200">
 
 #### Shopping List Page
 
