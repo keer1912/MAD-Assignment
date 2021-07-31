@@ -2,10 +2,10 @@
 This is a recipe app that allows you to search for recipes and upload your own recipes for others to see.
 
 ## The Team:
-Xavier Teo              s10203441
-Keerthana Keshaini      s10194171
-Sew Jing Wen            s10204931
-Sng Kai Ze Aaron        s10194187
+###Xavier Teo              s10203441
+###Keerthana Keshaini      s10194171 
+###Sew Jing Wen            s10204931
+###Sng Kai Ze Aaron        s10194187
 
 ## Contributions
 ### Xavier
