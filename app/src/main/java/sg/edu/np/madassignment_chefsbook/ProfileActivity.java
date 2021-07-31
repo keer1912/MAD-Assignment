@@ -23,6 +23,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,7 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView email;
     private FirebaseAuth mAuth;
     private ArrayList<CategoryFavourite> categoryList;
-
+String UID;
 
 
     @Override
@@ -48,6 +53,7 @@ public class ProfileActivity extends AppCompatActivity {
         if(user!= null){
             userName = findViewById(R.id.userName);
             userName.setText(user.getDisplayName());
+            UID = user.getUid();
 
             profilePic = findViewById(R.id.profilePic);
             //Toast.makeText(this.getApplicationContext(),user.getPhotoUrl().toString(),Toast.LENGTH_LONG).show();
@@ -134,6 +140,33 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        DatabaseReference mDatabase  =  firebaseDatabase.getReference().child("users").child(UID).child("Favourite");
+
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.getValue() != null){
+
+                    ArrayList<Recipe> favListOfTheUser = (ArrayList<Recipe>) snapshot.getValue();
+
+                    //count the number of fav for each cat
+
+                    //add to categoryList
+
+                }
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
     }
 
