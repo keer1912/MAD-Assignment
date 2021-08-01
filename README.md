@@ -15,7 +15,7 @@ This is a recipe app that allows you to search for recipes and upload your own r
 
 * Helped members to debug & solve errors when needed
 
-* Assited in App Testing
+* Assisted in App Testing
 
 ### Keerthana
 * Initial Firebase Implementation
@@ -32,6 +32,7 @@ This is a recipe app that allows you to search for recipes and upload your own r
 
 
 ### Jing Wen
+* Shopping List
 
 ### Aaron
 
@@ -123,5 +124,22 @@ Andddd... Walah! Your recipe is now uploaded into our App!
 </p>
 
 #### Shopping List
+Start by adding ingredients from recipes into your Shopping List
+You can do so by simply clicking on the plus icons next to the ingredients when viewing Recipes
+
+<img src="/README_Images/Screenshot_1627825465.png?raw=true" width="200">
+
+In the Shopping List page, you can view the Recipes for which you have ingredients remaining
+
+<img src="/README_Images/Screenshot_1627825586.png?raw=true" width="200">
+
+Next, by clicking on any of the Recipes, you will be able to view the ingredients which you added for it
+
+<img src="/README_Images/Screenshot_1627825592.png?raw=true" width="200">
+
+From here, you can remove ingredients that you have gotten off the list by clicking the cross icon next to the ingredient
+
+Ingredients that you have added to your Shopping List will be saved into the database, so rest assured it will still be there
+when you log in again
 
 #### Profile
