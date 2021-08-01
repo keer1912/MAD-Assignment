@@ -35,6 +35,11 @@ This is a recipe app that allows you to search for recipes and upload your own r
 * Shopping List
 
 ### Aaron
+* Profile Page based on Google Account
+
+* Add recipes favourites to user
+
+* Favorite recipe viewing based on category
 
 ## Appendices
 [Our app on Google Play Store](https://play.google.com/store/apps/details?id=sg.edu.np.madassignment_chefsbook)
@@ -143,3 +148,16 @@ Ingredients that you have added to your Shopping List will be saved into the dat
 when you log in again
 
 #### Profile
+Profile picture, username, and email will be displayed based on selected Google Account
+
+<img src="README_Images/Screenshot 2021-08-01 234641.png" width="200">
+
+Below, we have our saved recipes grouped by their respective categories
+
+<img src="README_Images/Screenshot 2021-08-01 234641.png" width="200">
+
+Clicking on any of those categories will bring you to our saved recipes list for that category
+
+<img src="README_Images/Screenshot 2021-08-01 234641.png" width="200">
+
+Clicking on the back button will bring you back to the profile page

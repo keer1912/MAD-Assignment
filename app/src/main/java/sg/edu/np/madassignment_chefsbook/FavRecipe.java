@@ -40,13 +40,24 @@ public class FavRecipe extends AppCompatActivity {
 //    button.setOnClickListener(new View.OnClickListener){
 //        @Override
 //    }
-
-
+    ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fav_recipe);
+
+        backButton = (ImageButton) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent back = new Intent(FavRecipe.this, ProfileActivity.class);
+                startActivity(back);
+            }
+        });
+
+
+
 
         favHeader = findViewById(R.id.favHeader);
 //        favHeader.setText()   //categoryname
