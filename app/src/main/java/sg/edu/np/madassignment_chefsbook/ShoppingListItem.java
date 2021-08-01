@@ -8,8 +8,13 @@ public class ShoppingListItem {
     String name;
     ArrayList<String> ingredientsList;
     String img;
+    String RecipeId;
 
     public ShoppingListItem(){}
+
+    public String getRecipeId(){ return RecipeId; }
+
+    public void setRecipeId(String RecipeId) { this.RecipeId = RecipeId; }
 
     public String getName() {
         return name;

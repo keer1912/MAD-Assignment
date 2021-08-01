@@ -61,9 +61,6 @@ public class RecipeDetailIngredientAdapter extends RecyclerView.Adapter<RecipeDe
                         DatabaseReference imgref = ref.child("img");
                         imgref.setValue(img);
                         long xy = snapshot.child("ingredientsList").getChildrenCount();
-                        while (snapshot.child("ingredientsList").hasChild(String.valueOf(xy))){
-                            xy += 1;
-                        }
                         DatabaseReference tempref = ref.child("ingredientsList").child(String.valueOf(xy));
                         tempref.setValue(s);
                     }

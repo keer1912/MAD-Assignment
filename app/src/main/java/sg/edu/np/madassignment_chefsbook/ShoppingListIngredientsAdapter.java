@@ -3,12 +3,11 @@ package sg.edu.np.madassignment_chefsbook;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
+
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,8 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 
 import java.util.ArrayList;
 
@@ -25,8 +26,10 @@ public class ShoppingListIngredientsAdapter extends RecyclerView.Adapter<Shoppin
     ArrayList<String> ingredientsList;
     Context context;
     static ShoppingListIngredientsAdapter sLIA;
+
     private FirebaseAuth mAuth;
     static String recipeName;
+    static String ID;
 
     public ShoppingListIngredientsAdapter(Context c, ArrayList<String> input) {
         this.ingredientsList = input;
@@ -47,6 +50,7 @@ public class ShoppingListIngredientsAdapter extends RecyclerView.Adapter<Shoppin
     public void onBindViewHolder(@NonNull ShoppingListIngredientsVH holder, int position) {
         String s = ingredientsList.get(position);
         holder.ingredientName.setText(s);
+        Log.v("Ingd ID", ID);
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,17 +62,19 @@ public class ShoppingListIngredientsAdapter extends RecyclerView.Adapter<Shoppin
                             public void onClick(DialogInterface dialog, int which) {
                                 String num = String.valueOf(position);
                                 Log.v("Tester", num);
+
                                 mAuth = FirebaseAuth.getInstance();
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://mad-assignment-recipe-app-default-rtdb.asia-southeast1.firebasedatabase.app/");
-                                DatabaseReference ref =  firebaseDatabase.getReference("users").child(user.getUid()).child("shoppinglist").child(recipeName).child("ingredientsList").child(num);
+                                DatabaseReference ref =  firebaseDatabase.getReference("users").child(user.getUid()).child("shoppinglist").child(ID).child("ingredientsList");
+
                                 int pos = ingredientsList.indexOf(s);
                                 ingredientsList.remove(s);
-                                ref.removeValue();
-
+                                ref.setValue(ingredientsList);
                                 Log.v("Ingredients",ingredientsList.toString());
                                 Toast.makeText(context, "Removed", Toast.LENGTH_SHORT);
                                 sLIA.notifyItemRemoved(pos);
+
                             }
                         })
                         .setNegativeButton("Close",null)

@@ -43,6 +43,7 @@ public class AddRecipeActivity extends AppCompatActivity {
     EditText rcpSteps;
     EditText rcpServings;
     Button btnSubmit;
+    Button btnUploadImg;
     boolean hasimg;
 
     private static final int PICK_IMG_REQUEST = 1;
@@ -67,7 +68,8 @@ public class AddRecipeActivity extends AppCompatActivity {
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
         addImg = (ImageView)findViewById(R.id.addImage);
-        addImg.setOnClickListener(new View.OnClickListener(){
+        btnUploadImg = (Button)findViewById(R.id.btnUploadImg);
+        btnUploadImg.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 openFileChooser();
@@ -216,6 +218,7 @@ public class AddRecipeActivity extends AppCompatActivity {
             mImageUri = data.getData();
 
             Picasso.with(this).load(mImageUri).into(addImg);    // Load image into ImageView after image has been added
+            btnUploadImg.setText("Change Image");
         }
     }
 

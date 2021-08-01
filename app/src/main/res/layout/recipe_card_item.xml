@@ -45,7 +45,7 @@
                     android:layout_gravity="left"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="#1EC5C1C1"
+                    android:background="#FFFFFF"
                     android:fontFamily="@font/poppins"
                     android:paddingTop="0dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -60,7 +60,7 @@
                     android:layout_gravity="left"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="#1EC5C1C1"
+                    android:background="#FFFFFF"
                     android:fontFamily="@font/poppins"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@color/black" />
