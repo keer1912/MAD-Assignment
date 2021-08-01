@@ -107,6 +107,12 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() { // If Activity is in memory call onResume instead and calls onStart to refresh bottom Nav
+        super.onResume();
+        onStart();
+    }
+
+    @Override
     protected void onStart() {  // Bottom Nav is onStart so when user press back on devices, it will refresh and show the current page they are on instead of the previous page
         super.onStart();
         //Bottom Nav

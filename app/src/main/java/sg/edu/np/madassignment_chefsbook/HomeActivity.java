@@ -213,6 +213,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        onStart();
     }
 
     @Override
@@ -258,5 +259,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }
