@@ -45,6 +45,9 @@ public class RecipeDetail extends AppCompatActivity {
     ImageButton favButton;
     private FirebaseAuth mAuth;
     ArrayList<Recipe> favRecipeArrayList;
+    String imageURL = "";
+    int minute = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,8 @@ public class RecipeDetail extends AppCompatActivity {
         showRecipeDifficulty = findViewById(R.id.ShowDifficulty);
         favButton = findViewById(R.id.FavButton);
         favRecipeArrayList = new ArrayList<Recipe>();
+        //
+        Boolean favChecker = false;
 
 
         /*String ReceiveRecipeOwner = getIntent().getExtras().get("owner").toString();
@@ -145,8 +150,11 @@ public class RecipeDetail extends AppCompatActivity {
                             showRecipeServing.setText("Serving Size\n" + r.servingSize);
                             showRecipeDifficulty.setText("Difficulty\n" + r.difficulty);
 
+                            minute =  r.time;
+
                             if (snapshot.child("img").getValue() != null) {
                                 String img = snapshot.child("img").getValue().toString();
+                                imageURL = snapshot.child("img").getValue().toString();
                                 Picasso.with(getApplicationContext()).load(img).into(recipeImg);
 
                                 //Shopping List
@@ -207,12 +215,34 @@ public class RecipeDetail extends AppCompatActivity {
                     //firebase insertion of
                     DatabaseReference mDatabase =  firebaseDatabase.getReference().child("users").child(UID).child("Favourite");
 
-                    if(!favRecipeArrayList.contains(ReceiveID)){
+                    if(!favRecipeArrayList.contains(new Recipe(ReceiveID))){
 
-                        favRecipeArrayList.add(new Recipe(ReceiveID, showRecipeCategory.getText().toString()));
+                        Recipe r = new Recipe(ReceiveID, showRecipeCategory.getText().toString());
+                        r.setRecipeId(ReceiveID);
+                        r.setImg(imageURL);
+                        r.setName(showRecipeName.getText().toString());
+                        r.setTime(minute);
+                        favRecipeArrayList.add(r);
+
+
                     }
                     mDatabase.setValue(favRecipeArrayList);
 
+//                    favChecker = true;
+//
+//                    favref.addValueEventListener(new ValueEventListener(){
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot snapshot){
+//                            if(favChecker.equals(true)){
+//                                if (snapshot.child(postkey).hasChild(currentUserid)){
+//                                    favref.child(postkey).child(currentUserid).removeValue();
+//                                    delete(time);
+//                                    favChecker = false;
+//
+//                                }
+//                            }
+//                        }
+//                    })
 
 
                 }

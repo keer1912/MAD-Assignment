@@ -2,7 +2,7 @@ package sg.edu.np.madassignment_chefsbook;
 
 import java.util.ArrayList;
 
-public class Recipe {
+public class Recipe{
 
     String name;
     String description;
@@ -19,6 +19,10 @@ public class Recipe {
     String RecipeId;
 
     public Recipe() {
+    }
+
+    public Recipe(String recipeId) {
+        this.RecipeId = recipeId;
     }
 
     public Recipe(String name, String category) {
@@ -130,4 +134,6 @@ public class Recipe {
     public void setCategory(String category) {
         this.category = category;
     }
+
+
 }
