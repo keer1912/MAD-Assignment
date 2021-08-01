@@ -39,6 +39,8 @@ This is a recipe app that allows you to search for recipes and upload your own r
 [Our app on Google Play Store](https://play.google.com/store/apps/details?id=sg.edu.np.madassignment_chefsbook)
 
 ### Guide
+[Oboarding](https://github.com/keer1912/MAD-Assignment#onboarding-page) | 
+[Login](https://github.com/keer1912/MAD-Assignment#login) | 
 [Home](https://github.com/keer1912/MAD-Assignment#home) | 
 [Recipe View](https://github.com/keer1912/MAD-Assignment#recipe-view) | 
 [Search](https://github.com/keer1912/MAD-Assignment#search) | 
@@ -74,6 +76,12 @@ When Chefs' Book users click on the recipe card as shown in the _Home Page_ or e
 </p>
 
 #### Search
+You can scroll to see the list of recipes or you can click on the search bar and type a recipe in to search for it
+<p float="left">
+    <img src="/README_Images/Screenshot_1627813980.png?raw=true" width="200">
+    <img src="/README_Images/Screenshot_1627813994.png?raw=true" width="200">
+    <img src="/README_Images/Screenshot_1627814005.png?raw=true" width="200">
+</p>
 
 #### Add Recipe
 Start by clicking the floating Add button in the middle of the bottom navigation.
@@ -82,10 +90,11 @@ Start by clicking the floating Add button in the middle of the bottom navigation
 
 Next, Click on `Upload Image` and select the image you want to upload.
 
-<img src="/README_Images/Screenshot_1627747817.png?raw=true" width="200">
-<img src="/README_Images/Screenshot_1627747823.png?raw=true" width="200">
-<img src="/README_Images/Screenshot_1627747826.png?raw=true" width="200">
-
+<p float="left">
+    <img src="/README_Images/Screenshot_1627747817.png?raw=true" width="200">
+    <img src="/README_Images/Screenshot_1627747823.png?raw=true" width="200">
+    <img src="/README_Images/Screenshot_1627747826.png?raw=true" width="200">
+</p>
 Type in your Recipe's `Name`, it's `Category` and a short `Description`. Your Recipe Name has a limit of 50 characters.
 
 <img src="/README_Images/Screenshot_1627747900.png?raw=true" width="200">
@@ -108,8 +117,10 @@ Lastly, enter the `Serving Size` and click the Post button to submit your recipe
 
 Andddd... Walah! Your recipe is now uploaded into our App!
 
-<img src="/README_Images/Screenshot_1627748137.png?raw=true" width="200">
-<img src="/README_Images/Screenshot_1627748140.png?raw=true" width="200">
+<p float="left">
+    <img src="/README_Images/Screenshot_1627748137.png?raw=true" width="200">
+    <img src="/README_Images/Screenshot_1627748140.png?raw=true" width="200">
+</p>
 
 #### Shopping List
 
