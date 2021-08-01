@@ -138,6 +138,9 @@ String UID;
                 Intent intent = new Intent(view.getContext(), FavRecipe.class);
                 intent.putExtra("name", categoryList.get(position).getCategory());
                 startActivity(intent);
+
+
+
             }
         });
 
@@ -209,6 +212,7 @@ String UID;
 class CategoryAdapter extends ArrayAdapter<CategoryFavourite> {
 
     //ArrayList<CategoryFavourite> categoryList;
+
 
     public CategoryAdapter(Context context, ArrayList<CategoryFavourite> categoryList) {
         super(context,0,categoryList);
