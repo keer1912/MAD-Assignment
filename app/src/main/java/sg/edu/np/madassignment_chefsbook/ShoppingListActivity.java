@@ -78,6 +78,8 @@ public class ShoppingListActivity extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     protected void onResume(){
         super.onResume();

@@ -15,7 +15,7 @@ This is a recipe app that allows you to search for recipes and upload your own r
 
 * Helped members to debug & solve errors when needed
 
-* Assited in App Testing
+* Assisted in App Testing
 
 ### Keerthana
 * Initial Firebase Implementation
@@ -32,6 +32,7 @@ This is a recipe app that allows you to search for recipes and upload your own r
 
 
 ### Jing Wen
+* Shopping List
 
 ### Aaron
 
@@ -39,6 +40,8 @@ This is a recipe app that allows you to search for recipes and upload your own r
 [Our app on Google Play Store](https://play.google.com/store/apps/details?id=sg.edu.np.madassignment_chefsbook)
 
 ### Guide
+[Oboarding](https://github.com/keer1912/MAD-Assignment#onboarding-page) | 
+[Login](https://github.com/keer1912/MAD-Assignment#login) | 
 [Home](https://github.com/keer1912/MAD-Assignment#home) | 
 [Recipe View](https://github.com/keer1912/MAD-Assignment#recipe-view) | 
 [Search](https://github.com/keer1912/MAD-Assignment#search) | 
@@ -74,6 +77,12 @@ When Chefs' Book users click on the recipe card as shown in the _Home Page_ or e
 </p>
 
 #### Search
+You can scroll to see the list of recipes or you can click on the search bar and type a recipe in to search for it
+<p float="left">
+    <img src="/README_Images/Screenshot_1627813980.png?raw=true" width="200">
+    <img src="/README_Images/Screenshot_1627813994.png?raw=true" width="200">
+    <img src="/README_Images/Screenshot_1627814005.png?raw=true" width="200">
+</p>
 
 #### Add Recipe
 Start by clicking the floating Add button in the middle of the bottom navigation.
@@ -82,10 +91,11 @@ Start by clicking the floating Add button in the middle of the bottom navigation
 
 Next, Click on `Upload Image` and select the image you want to upload.
 
-<img src="/README_Images/Screenshot_1627747817.png?raw=true" width="200">
-<img src="/README_Images/Screenshot_1627747823.png?raw=true" width="200">
-<img src="/README_Images/Screenshot_1627747826.png?raw=true" width="200">
-
+<p float="left">
+    <img src="/README_Images/Screenshot_1627747817.png?raw=true" width="200">
+    <img src="/README_Images/Screenshot_1627747823.png?raw=true" width="200">
+    <img src="/README_Images/Screenshot_1627747826.png?raw=true" width="200">
+</p>
 Type in your Recipe's `Name`, it's `Category` and a short `Description`. Your Recipe Name has a limit of 50 characters.
 
 <img src="/README_Images/Screenshot_1627747900.png?raw=true" width="200">
@@ -108,9 +118,28 @@ Lastly, enter the `Serving Size` and click the Post button to submit your recipe
 
 Andddd... Walah! Your recipe is now uploaded into our App!
 
-<img src="/README_Images/Screenshot_1627748137.png?raw=true" width="200">
-<img src="/README_Images/Screenshot_1627748140.png?raw=true" width="200">
+<p float="left">
+    <img src="/README_Images/Screenshot_1627748137.png?raw=true" width="200">
+    <img src="/README_Images/Screenshot_1627748140.png?raw=true" width="200">
+</p>
 
 #### Shopping List
+Start by adding ingredients from recipes into your Shopping List
+You can do so by simply clicking on the plus icons next to the ingredients when viewing Recipes
+
+<img src="/README_Images/Screenshot_1627825465.png?raw=true" width="200">
+
+In the Shopping List page, you can view the Recipes for which you have ingredients remaining
+
+<img src="/README_Images/Screenshot_1627825586.png?raw=true" width="200">
+
+Next, by clicking on any of the Recipes, you will be able to view the ingredients which you added for it
+
+<img src="/README_Images/Screenshot_1627825592.png?raw=true" width="200">
+
+From here, you can remove ingredients that you have gotten off the list by clicking the cross icon next to the ingredient
+
+Ingredients that you have added to your Shopping List will be saved into the database, so rest assured it will still be there
+when you log in again
 
 #### Profile

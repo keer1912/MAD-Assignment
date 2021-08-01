@@ -201,6 +201,12 @@ public class AddRecipeActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() { // If Activity is in memory call onResume instead and calls onStart to refresh bottom Nav
+        super.onResume();
+        onStart();
+    }
+
     private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
